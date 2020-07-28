@@ -29,7 +29,7 @@ class Post
 		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/company?&token='.env('IEXCLOUD_API_KEY'));
 	}
 
-	public function get_sectors()
+	public function sectors()
 	{
 		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/stock/market/sector-performance/?token='.env('IEXCLOUD_API_KEY'));
 	}
@@ -40,9 +40,29 @@ class Post
 
 	}
 
-	public function get_news()
+	public function news()
 	{
 		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/time-series/news/?token='.env('IEXCLOUD_API_KEY'));
+	}
+
+	public function unemployment_rate()
+	{
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/data-points/market/UNRATE/?token='.env('IEXCLOUD_API_KEY'));
+	}
+
+	public function top_gainers()
+	{
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/stock/market/list/gainers/?displayPercent=true&token='.env('IEXCLOUD_API_KEY'));
+	}
+
+	public function top_losers()
+	{
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/stock/market/list/losers/?displayPercent=true&token='.env('IEXCLOUD_API_KEY'));
+	}
+
+	public function most_active()
+	{
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'/stock/market/list/most_active/?displayPercent=true&token='.env('IEXCLOUD_API_KEY'));
 	}
 
 	// USE MARKET to query multiple companies
