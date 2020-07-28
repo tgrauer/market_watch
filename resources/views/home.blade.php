@@ -13,7 +13,7 @@
         <div class="col-sm-4">
             <div class="todays_earnings card todays_earnings">
                 <div class="card-header">
-                    <h4>Today's Earnings</h4>
+                    <h4 class="mb0">Today's Earnings</h4>
                 </div>
 
                 <div class="card-body">
@@ -26,17 +26,33 @@
 
                         @foreach($bto_earnings as $ern)
                             @if($loop->index < 10)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}">{{$ern['quote']['companyName']}} - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">${{$ern['quote']['delayedPrice']}}</span></a> 
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
+                                @if($ern['quote']['previousClose'] < $ern['quote']['delayedPrice'])
+                                    <span class="current_price_down price float-right">${{$ern['quote']['delayedPrice']}}</span>
+                                @else
+                                    <span class="current_price_up price float-right">${{$ern['quote']['delayedPrice']}}</span>
+                                @endif
+                                </a> 
                             @endif
                         @endforeach
 
                         @foreach($amc_earnings as $ern)
                             @if($loop->index < 10)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}">{{$ern['quote']['companyName']}} - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">${{$ern['quote']['delayedPrice']}}</span></a> 
-                            @endif
-                        @endforeach
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
 
+                                @if($ern['quote']['previousClose'] < $ern['quote']['delayedPrice'])
+                                    <span class="current_price_down price float-right">${{$ern['quote']['delayedPrice']}}</span>
+                                @else
+                                    <span class="current_price_up price float-right">${{$ern['quote']['delayedPrice']}}</span>
+                                @endif
+                                </a> 
+                            @endif
+                        @endforeach                        
                     </ul>
+                    
+                    <div class="d-flex justify-content-center">
+                        <a href="" class="btn btn-info btn-md mt20 mb20">View All Earnings</a>
+                    </div>
                 </div>
             </div>
         </div>
