@@ -41,6 +41,12 @@ class HomeController extends Controller
         return view('home')->with($data);
     }
 
+    public function search(Request $request)
+    {
+    	// return [$request->search_term];
+    	return $this->home->search($request->search_term);
+    }
+
     public function get_sectors()
     {
     	return $this->home->sectors();

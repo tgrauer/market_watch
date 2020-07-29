@@ -15,9 +15,9 @@ class StockController extends Controller
     	$this->stock = $stock;
     }
 
-    public function getStock()
+    public function getStock($ticker)
     {
-    	$ticker = 'AAPL';
+    	//$ticker = 'AAPL';
     	$stock_info = $this->stock->get_stock($ticker);
 
     	return view('/stock', compact('stock_info'));

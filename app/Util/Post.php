@@ -17,6 +17,12 @@ class Post
 	//	return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/batch?types=quote,news,chart&range=1m&last=10&token='.env('IEXCLOUD_API_KEY'));
 	//}
 
+	public function search($search_term)
+	{
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'search/'.$search_term.'?&token='.env('IEXCLOUD_API_KEY'));
+
+	}
+
 	public function get_stock($ticker)
 	{
 		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/batch?types=quote,news,chart&range=1m&last=10&token='.env('IEXCLOUD_API_KEY'));

@@ -27,6 +27,17 @@ body{
 	color:#eee;
 }
 
+.jumbotron{
+	background: url(/assets/img/stock_charts.jpg);
+	width: 100%;
+	min-height: 400px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color:#fff;
+}
+
 .current_price_down{color:tomato;}
 .current_price_up{color:green;}
 
