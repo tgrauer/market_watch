@@ -13,11 +13,8 @@ use GuzzleHttp\Client;
 |
 */
 
-Route::get('/home/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/stock', 'StockController@getStock');
 Route::get('/company/{ticker}', 'CompanyController@index');
 Route::get('/earnings/', 'EarningsController@index');
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/search/{search_term}', 'HomeController@search');
