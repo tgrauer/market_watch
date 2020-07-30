@@ -51,17 +51,24 @@ body{
 	}
 
 	.results{
-		background: #111;
-		border:1px solid #333;
+		background: #232323;
+		border:1px solid #222;
 		width: 300px;
 		color:#aaa;
 		position: relative;
 		bottom: 1px;
 
 		.list-group-item{
-			background: #333;
-			border: 1px solid #111;
+			background: #000;
+			border: 1px solid #222;
 			color:#ccc;
+			border-left: none;
+			border-right: none;
+
+			&:hover{
+				background: lighten(#000, 5%);
+				color:$turq;
+			}
 		}
 	}
 }

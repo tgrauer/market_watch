@@ -26,8 +26,6 @@ class HomeController extends Controller
     	$top_losers = $this->top_losers();
     	$most_active = $this->most_active();
 
-    	// return view('/home', compact('sector_performance', 'todays_earnings', 'news', 'unemployment_rate', 'top_gainers', 'top_losers', 'most_active'));
-
     	$data = [
     		'news' => $news,
             'sector_performance' => $sector_performance,
@@ -43,7 +41,6 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-    	// return [$request->search_term];
     	return $this->home->search($request->search_term);
     }
 

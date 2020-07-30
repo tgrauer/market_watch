@@ -37,7 +37,7 @@ var Market_Watch = {
 
 				var results ='';
 				for(var i=0;i<response.length;i++){
-					results+= '<a class="list-group-item list-group-item-action" href="/company/'+response[i].symbol+'"><span class="company_name">'+response[i].symbol + response[i].securityName+'</span>' + '-' +(response[i].exchange)+'</a>';
+					results+= '<a class="list-group-item list-group-item-action" href="/company/'+response[i].symbol+'"><span class="company_name">'+response[i].symbol +' | ' + response[i].securityName+'</span>' + ' (' +response[i].exchange+')</a>';
 				}
 
 				$('.results').append(results).show();				

@@ -10990,8 +10990,8 @@ body {
 }
 
 .jumbotron .results {
-  background: #111;
-  border: 1px solid #333;
+  background: #232323;
+  border: 1px solid #222;
   width: 300px;
   color: #aaa;
   position: relative;
@@ -10999,9 +10999,16 @@ body {
 }
 
 .jumbotron .results .list-group-item {
-  background: #333;
-  border: 1px solid #111;
+  background: #000;
+  border: 1px solid #222;
   color: #ccc;
+  border-left: none;
+  border-right: none;
+}
+
+.jumbotron .results .list-group-item:hover {
+  background: #0d0d0d;
+  color: #00A1C3;
 }
 
 .current_price_down {
