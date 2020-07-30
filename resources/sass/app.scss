@@ -12,6 +12,7 @@ $turq:#00A1C3;
 body{
 	font-size: 13px;
 	background: #eee;
+	color:#665;
 }
 
 .mt0{margin-top: 0 !important;}
@@ -20,8 +21,9 @@ body{
 .mb0{margin-bottom: 0 !important;}
 .mb10{margin-bottom: 10px !important;}
 .mb20{margin-bottom: 20px !important;}
-
 .p0{padding: 0 !important;}
+
+.hidetilloaded{display: none;}
 
 .btn{
 	color:#eee;
@@ -36,6 +38,32 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 	color:#fff;
+	
+
+	.search_form{
+		input{
+			height: 50px;
+			font-size: 18px;
+			background: rgba(0, 0, 0, 0.8);
+			border:1px solid #333;
+			color:#eee;
+		}
+	}
+
+	.results{
+		background: #111;
+		border:1px solid #333;
+		width: 300px;
+		color:#aaa;
+		position: relative;
+		bottom: 1px;
+
+		.list-group-item{
+			background: #333;
+			border: 1px solid #111;
+			color:#ccc;
+		}
+	}
 }
 
 .current_price_down{color:tomato;}

@@ -10931,6 +10931,7 @@ a.text-dark:focus {
 body {
   font-size: 13px;
   background: #eee;
+  color: #665;
 }
 
 .mt0 {
@@ -10961,6 +10962,10 @@ body {
   padding: 0 !important;
 }
 
+.hidetilloaded {
+  display: none;
+}
+
 .btn {
   color: #eee;
 }
@@ -10974,6 +10979,29 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
+}
+
+.jumbotron .search_form input {
+  height: 50px;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+  color: #eee;
+}
+
+.jumbotron .results {
+  background: #111;
+  border: 1px solid #333;
+  width: 300px;
+  color: #aaa;
+  position: relative;
+  bottom: 1px;
+}
+
+.jumbotron .results .list-group-item {
+  background: #333;
+  border: 1px solid #111;
+  color: #ccc;
 }
 
 .current_price_down {
