@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($todays_earnings);?> --}}
+{{-- <?php dd($top_gainers);?> --}}
 {{-- <?php dd($todays_earnings['bto']);?> --}}
 
 <div class="jumbotron jumbotron-fluid">
@@ -32,7 +32,7 @@
                     <ul class="list-group">
                         @if(!empty($top_gainers))
                             @foreach($top_gainers as $tg)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tg['symbol']])}}"><span class="company_name">{{$tg['companyName']}}</span> - <span class="ticker">{{$tg['symbol']}}</span> <span class="float-right">{{$tg['changePercent']}}%</span></a>
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tg['symbol']])}}"><span class="company_name">{{$tg['companyName']}}</span> - <span class="ticker">{{$tg['symbol']}}</span> <span class="float-right {{$tg['changePercent']>1 ? 'positive' : 'negative'}}">{{round($tg['changePercent'],2)}}%</span></a>
                             @endforeach
                         @endif
                     </ul>
@@ -50,7 +50,7 @@
                     <ul class="list-group">
                         @if(!empty($top_losers))
                             @foreach($top_losers as $tl)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tl['symbol']])}}"><span class="company_name">{{$tl['companyName']}}</span> - <span class="ticker">{{$tl['symbol']}}</span> <span class="float-right">{{$tl['changePercent']}}%</span></a>
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tl['symbol']])}}"><span class="company_name">{{$tl['companyName']}}</span> - <span class="ticker">{{$tl['symbol']}}</span> <span class="float-right {{$tl['changePercent']>1 ? 'positive' : 'negative'}}">{{round($tl['changePercent'],2)}}%</span></a>
                             @endforeach
                         @endif
                     </ul>
@@ -78,11 +78,8 @@
                             @foreach($bto_earnings as $ern)
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
-                                    @if($ern['quote']['previousClose'] < $ern['quote']['latestPrice'])
-                                        <span class="current_price_down price float-right">${{$ern['quote']['latestPrice']}}</span>
-                                    @else
-                                        <span class="current_price_up price float-right">${{$ern['quote']['latestPrice']}}</span>
-                                    @endif
+
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'], 'USD')</span>
                                     </a> 
                                 @endif
                             @endforeach
@@ -91,11 +88,7 @@
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
 
-                                    @if($ern['quote']['previousClose'] < $ern['quote']['latestPrice'])
-                                        <span class="current_price_down price float-right">${{$ern['quote']['latestPrice']}}</span>
-                                    @else
-                                        <span class="current_price_up price float-right">${{$ern['quote']['latestPrice']}}</span>
-                                    @endif
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'], 'USD')</span>
                                     </a> 
                                 @endif
                             @endforeach 

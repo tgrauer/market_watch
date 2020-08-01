@@ -11011,11 +11011,13 @@ body {
   color: #00A1C3;
 }
 
-.current_price_down {
+.current_price_down,
+.negative {
   color: tomato;
 }
 
-.current_price_up {
+.current_price_up,
+.positive {
   color: green;
 }
 
@@ -11038,7 +11040,7 @@ nav.navbar .navbar-brand {
 .todays_earnings .card-body .list-group-item,
 .top_gainers .card-body .list-group-item,
 .top_losers .card-body .list-group-item {
-  font-size: 14px;
+  font-size: 13px;
   border-left: none;
   border-right: none;
   padding: 0.75rem 1rem;

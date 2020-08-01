@@ -73,8 +73,8 @@ body{
 	}
 }
 
-.current_price_down{color:tomato;}
-.current_price_up{color:green;}
+.current_price_down, .negative{color:tomato;}
+.current_price_up, .positive{color:green;}
 
 nav.navbar{
 	background: $turq;
@@ -97,7 +97,7 @@ nav.navbar{
 	.card-body{
 
 		.list-group-item{
-			font-size: 14px;
+			font-size: 13px;
 			border-left: none;
 			border-right: none;
 			padding: 0.75rem 1.0rem;

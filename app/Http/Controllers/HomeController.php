@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Util\Post;
+use Akaunting\Money\Currency;
+use Akaunting\Money\Money;
 
 class HomeController extends Controller
 {
