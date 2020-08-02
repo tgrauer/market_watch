@@ -30,9 +30,9 @@ class Post
 
 	public function get_company_profile($ticker)
 	{
-		//return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/batch?types=quote,news,chart&range=1m&last=10&token='.env('IEXCLOUD_API_KEY'));
+		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/batch?types=company,quote,news,chart&range=5d&last=10&token='.env('IEXCLOUD_API_KEY'));
 
-		return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/company?&token='.env('IEXCLOUD_API_KEY'));
+		// return $this->endpointRequest(env('IEXCLOUD_BASE_URL').'stock/'.$ticker.'/company?&token='.env('IEXCLOUD_API_KEY'));
 	}
 
 	public function sectors()

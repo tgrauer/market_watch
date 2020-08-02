@@ -79,7 +79,7 @@
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
 
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'], 'USD')</span>
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">${{$ern['quote']['latestPrice']}}</span>
                                     </a> 
                                 @endif
                             @endforeach
@@ -88,7 +88,7 @@
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
 
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'], 'USD')</span>
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">${{$ern['quote']['latestPrice']}}</span>
                                     </a> 
                                 @endif
                             @endforeach 

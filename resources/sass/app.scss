@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700');
 
 // Variables
 @import 'variables';
@@ -8,19 +8,28 @@
 @import '~bootstrap/scss/bootstrap';
 
 $turq:#00A1C3;
+$red:tomato;
+$green:#42A458;
 
 body{
 	font-size: 13px;
+	font-weight: 400;
 	background: #eee;
-	color:#665;
+	color:#555;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .mt0{margin-top: 0 !important;}
 .mt10{margin-top: 10px !important;}
 .mt20{margin-top: 20px !important;}
+.mt30{margin-top: 30px !important;}
+.mt35{margin-top: 35px !important;}
+.mt50{margin-top: 50px !important;}
 .mb0{margin-bottom: 0 !important;}
 .mb10{margin-bottom: 10px !important;}
 .mb20{margin-bottom: 20px !important;}
+.mb30{margin-bottom: 30px !important;}
+.mb50{margin-bottom: 50px !important;}
 .p0{padding: 0 !important;}
 
 .hidetilloaded{display: none;}
@@ -74,7 +83,7 @@ body{
 }
 
 .current_price_down, .negative{color:tomato;}
-.current_price_up, .positive{color:green;}
+.current_price_up, .positive{color:$green;}
 
 nav.navbar{
 	background: $turq;
@@ -117,3 +126,36 @@ nav.navbar{
 		}
 	}
 }
+
+.company_profile{
+	h2.comp_name{
+		font-weight: 600;
+		color:#444;
+	}
+
+	.current_stock_price{
+		font-weight: 600;
+
+		.latest_change{
+			font-size: 13px;
+			font-weight: 700;
+			position: relative;
+			bottom:9px;
+
+			&.positive{color:$green;}
+			&.negative{color:$red;}
+		}
+	}
+
+	.company_details {
+		.list-group-item{
+			padding: 0.5rem 0;
+		}
+		
+	}
+}
+
+
+
+
+

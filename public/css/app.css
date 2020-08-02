@@ -1,11 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:ital,wght@0,400;
 
-/*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+0,600;0,700;0,800;1,400;1,600;1,700);@charset "UTF-8";
 
 :root {
   --blue: #3490dc;
@@ -10930,8 +10925,10 @@ a.text-dark:focus {
 
 body {
   font-size: 13px;
+  font-weight: 400;
   background: #eee;
-  color: #665;
+  color: #555;
+  font-family: "Open Sans", sans-serif;
 }
 
 .mt0 {
@@ -10946,6 +10943,18 @@ body {
   margin-top: 20px !important;
 }
 
+.mt30 {
+  margin-top: 30px !important;
+}
+
+.mt35 {
+  margin-top: 35px !important;
+}
+
+.mt50 {
+  margin-top: 50px !important;
+}
+
 .mb0 {
   margin-bottom: 0 !important;
 }
@@ -10956,6 +10965,14 @@ body {
 
 .mb20 {
   margin-bottom: 20px !important;
+}
+
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+.mb50 {
+  margin-bottom: 50px !important;
 }
 
 .p0 {
@@ -11018,7 +11035,7 @@ body {
 
 .current_price_up,
 .positive {
-  color: green;
+  color: #42A458;
 }
 
 nav.navbar {
@@ -11066,5 +11083,33 @@ nav.navbar .navbar-brand {
 .top_losers .card-body .btn {
   margin: 0 auto;
   display: block;
+}
+
+.company_profile h2.comp_name {
+  font-weight: 600;
+  color: #444;
+}
+
+.company_profile .current_stock_price {
+  font-weight: 600;
+}
+
+.company_profile .current_stock_price .latest_change {
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  bottom: 9px;
+}
+
+.company_profile .current_stock_price .latest_change.positive {
+  color: #42A458;
+}
+
+.company_profile .current_stock_price .latest_change.negative {
+  color: tomato;
+}
+
+.company_profile .company_details .list-group-item {
+  padding: 0.5rem 0;
 }
 

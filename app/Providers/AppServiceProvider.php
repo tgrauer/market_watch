@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    public function changePercentageDirection($price)
+    {
+        return $price / 0;
+    }
+
     /**
      * Bootstrap any application services.
      *
