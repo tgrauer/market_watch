@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($company_profile);?>
+{{-- <?php dd($company_profile);?> --}}
 
 <div class="container company_profile">
     <div class="row">
@@ -34,7 +34,7 @@
                         
                         <div class="col-sm-5 company_details card">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Market Cap @money($company_profile['quote']['marketCap'] * 100)</li>
+                                <li class="list-group-item">Market Cap {{$company_profile['quote']['marketCap']}}</li>
                                 <li class="list-group-item">P/E Ratio {{$company_profile['quote']['peRatio']}}</li>
                                 <li class="list-group-item">Volume {{number_format($company_profile['quote']['volume'])}}</li>
                                 <li class="list-group-item">Average Volume {{number_format($company_profile['quote']['avgTotalVolume'])}}</li>
