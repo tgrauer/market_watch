@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-use App\Util\Post;
+use App\Util\IEXCloud;
 
 class StockController extends Controller
 {
-    protected $stock;
+    protected $api;
 
-    public function __construct(POST $stock)
+    public function __construct(IEXCloud $api)
     {
-    	$this->stock = $stock;
+    	$this->api = $api;
     }
 
     public function getStock($ticker)
     {
-    	//$ticker = 'AAPL';
-    	$stock_info = $this->stock->get_stock($ticker);
-
-    	return view('/stock', compact('stock_info'));
+    	// $stock_info = $this->api->sendRequest($ticker);
+    	// return view('/stock', compact('stock_info'));
     }
 
     // public function show($id)

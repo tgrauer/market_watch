@@ -32,7 +32,7 @@
                     <ul class="list-group">
                         @if(!empty($top_gainers))
                             @foreach($top_gainers as $tg)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tg['symbol']])}}"><span class="company_name">{{$tg['companyName']}}</span> - <span class="ticker">{{$tg['symbol']}}</span> <span class="float-right {{$tg['changePercent']>1 ? 'positive' : 'negative'}}">{{round($tg['changePercent'],2)}}%</span></a>
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tg['symbol']])}}"><span class="company_name">{{$tg['companyName']}}</span> - <span class="ticker">{{$tg['symbol']}}</span> <span class="float-right {{$tg['changePercent']>0 ? 'positive' : 'negative'}}">{{round($tg['changePercent'],2)}}%</span></a>
                             @endforeach
                         @endif
                     </ul>
@@ -50,7 +50,7 @@
                     <ul class="list-group">
                         @if(!empty($top_losers))
                             @foreach($top_losers as $tl)
-                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tl['symbol']])}}"><span class="company_name">{{$tl['companyName']}}</span> - <span class="ticker">{{$tl['symbol']}}</span> <span class="float-right {{$tl['changePercent']>1 ? 'positive' : 'negative'}}">{{round($tl['changePercent'],2)}}%</span></a>
+                                <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$tl['symbol']])}}"><span class="company_name">{{$tl['companyName']}}</span> - <span class="ticker">{{$tl['symbol']}}</span> <span class="float-right {{$tl['changePercent']>0 ? 'positive' : 'negative'}}">{{round($tl['changePercent'],2)}}%</span></a>
                             @endforeach
                         @endif
                     </ul>
