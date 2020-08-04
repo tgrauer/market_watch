@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Util\IEXCloud;
+use Redirect;
 
 class CompanyController extends Controller
 {
@@ -24,7 +25,16 @@ class CompanyController extends Controller
         $company_profile['quote']['marketCap'] = $this->abbreviate_number($company_profile['quote']['marketCap']);
         $company_profile['quote']['volume'] = $this->check_volume($company_profile['quote']['isUSMarketOpen'], $company_profile['quote']['latestVolume'], $company_profile['quote']['previousVolume']);
 
-    	return view('/company', compact('company_profile'));
+    	return view('company.company', compact('company_profile'));
+    }
+
+    public function getCompanyDividends($symbol, $range){
+
+        $symbol='AAPL';
+        $range='1y';
+        $data = $this->api->sendRequest('/stock/'.$symbol.'/dividends/'.$range);
+        // return $data;
+        return view('company.dividends', compact('data'));
     }
 
     private function check_volume($isUSMarketOpen, $latestVolume, $previousVolume)
@@ -65,3 +75,8 @@ class CompanyController extends Controller
 
 // USE MARKET to query multiple companies
 ///stock/market/batch?symbols=aapl,fb,tsla&types=quote,news,chart&range=1m&last=5
+
+/// TABS
+// /stock/{symbol}/dividends/{range}
+// /stock/{symbol}/financials/
+// /stock/{symbol}/insider-transactions
