@@ -12,7 +12,6 @@ var Market_Watch = {
 	search:function(e){
 		e.preventDefault();
 		var search_term = $(this).val();
-		console.log(search_term);
 		
 		$('.results').empty();
 

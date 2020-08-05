@@ -14,7 +14,17 @@ use GuzzleHttp\Client;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/stock', 'StockController@getStock');
-Route::get('/company/{ticker}', 'CompanyController@index');
-Route::get('/earnings/', 'EarningsController@index');
 Route::post('/search/{search_term}', 'HomeController@search');
+
+Route::prefix('company')->group(function(){
+	Route::get('/{ticker}', 'CompanyController@index');
+	Route::get('/{ticker}/dividends/{range}', 'CompanyController@getCompanyDividends');
+	Route::get('/stock/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
+	Route::get('/stock/{symbol}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
+});
+
+
+// Route::get('/stock/{symbol}/dividends/{range}', 'CompanyController@getDividends');
+
+Route::get('/earnings/', 'EarningsController@index');
+Route::get('/stock', 'StockController@getStock');

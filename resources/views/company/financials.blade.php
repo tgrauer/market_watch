@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($company_profile);?> --}}
+{{-- <?php dd($data);?> --}}
 
 <div class="container company_profile">
     <div class="row">
@@ -19,7 +19,7 @@
 
                 <div class="tab-content mt30" id="nav-tabContent">                    
                     
-                    <div class="tab-pane fade" id="nav-financials" role="tabpanel" aria-labelledby="nav-financials-tab">
+                    <div class="tab-pane fade show active" id="nav-financials" role="tabpanel" aria-labelledby="nav-financials-tab">
                         <h4>Financials</h4>
                     </div>
 

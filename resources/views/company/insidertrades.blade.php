@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($company_profile);?> --}}
+<?php dd($data);?>
 
 <div class="container company_profile">
     <div class="row">
@@ -18,7 +18,7 @@
                 @include('company.shared.company_nav')
 
                 <div class="tab-content mt30" id="nav-tabContent">
-                    <div class="tab-pane fade" id="nav-insidertrades" role="tabpanel" aria-labelledby="nav-insidertrades-tab">
+                    <div class="tab-pane fade show active" id="nav-insidertrades" role="tabpanel" aria-labelledby="nav-insidertrades-tab">
                         <h4>Insider Transactions</h4>
                     </div>
                 </div>
