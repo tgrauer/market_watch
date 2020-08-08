@@ -2,23 +2,54 @@
 
 @section('content')
 
-{{-- <?php dd($todays_earnings);?> --}}
+{{-- <?php dd($most_active);?> --}}
 {{-- <?php dd($todays_earnings['bto']);?> --}}
 
 <div class="jumbotron jumbotron-fluid">
 
-
     <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 class="display-4">Fluid jumbotron</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
 
-        <form action="#" class="form search_form">
-            <div class="form-group mb0">
-                <input type="text" class="form-control search" name="search" placeholder="Search ticker or company name">
+                <form action="#" class="form search_form">
+                    <div class="form-group mb0">
+                        <input type="text" class="form-control search" name="search" placeholder="Search ticker or company name">
+                    </div>
+
+                    <div class="results hidetilloaded"></div>
+                </form>
             </div>
+            
+            <div class="col-sm-4">
+                <div class="most_active card">
+                    <div class="card-header">
+                        <h4 class="mb0">Most Active</h4>
+                    </div>
 
-            <div class="results hidetilloaded"></div>
-        </form>
+                    <div class="card-body p0">
+                        <ul class="list-group">                                   
+                            @if(!empty($most_active))
+                                @foreach($most_active as $stk)
+                                    <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$stk['symbol']])}}"><span class="company_name">{{$stk['companyName']}}</span> - <span class="ticker">{{$stk['symbol']}}</span>
+
+                                    <span class="price float-right">{{$stk['latestUpdate']}} - @money($stk['latestPrice'] *100)</span>
+                                    </a> 
+                                @endforeach
+                            @endif                       
+                        </ul>
+                        
+                       {{--  @if(!empty($todays_earnings)) 
+                            <div class="d-flex justify-content-center">
+                                <a href="" class="btn btn-md mt20 mb20 sec_btn">View All Earnings</a>
+                            </div>
+                        @endif --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -97,9 +128,11 @@
                         @endif                       
                     </ul>
                     
-                    <div class="d-flex justify-content-center">
-                        <a href="" class="btn btn-info btn-md mt20 mb20">View All Earnings</a>
-                    </div>
+                    @if(!empty($todays_earnings)) 
+                        <div class="d-flex justify-content-center">
+                            <a href="" class="btn btn-md mt20 mb20 sec_btn">View All Earnings</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

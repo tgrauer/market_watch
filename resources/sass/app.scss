@@ -7,7 +7,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-$turq:#00A1C3;
+$primary:#0f478A;
+$secondary:#2AD1A3;
 $red:tomato;
 $green:#42A458;
 
@@ -38,6 +39,11 @@ body{
 	color:#eee;
 }
 
+.btn.sec_btn{
+	background: $secondary !important;
+	
+}
+
 .jumbotron{
 	background: url(/assets/img/stock_charts.jpg);
 	width: 100%;
@@ -47,6 +53,8 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 	color:#fff;
+	padding-top: 45px;
+	padding-bottom: 20px;
 	
 
 	.search_form{
@@ -76,7 +84,7 @@ body{
 
 			&:hover{
 				background: lighten(#000, 5%);
-				color:$turq;
+				color:$primary;
 			}
 		}
 	}
@@ -85,8 +93,8 @@ body{
 .current_price_down, .negative{color:tomato;}
 .current_price_up, .positive{color:$green;}
 
-nav.navbar{
-	background: $turq;
+nav.navbar.navbar-dark{
+	background: $primary !important;
 	color:#fff;
 
 	.navbar-brand{
@@ -94,7 +102,7 @@ nav.navbar{
 	}
 }
 
-.todays_earnings, .top_gainers, .top_losers{
+.todays_earnings, .top_gainers, .top_losers, .most_active{
 	
 	.card-header{
 		h4{
@@ -112,7 +120,7 @@ nav.navbar{
 			padding: 0.75rem 1.0rem;
 			
 			&:hover > .company_name, &:hover > .ticker{
-				color:$turq;
+				color:$primary;
 			}
 
 			.ticker{
@@ -124,6 +132,16 @@ nav.navbar{
 			margin:0 auto;
 			display: block;
 		}
+	}
+}
+
+.most_active{
+	height: 100%;
+	max-height: 320px;
+	overflow-y:hidden;
+
+	h4{
+		color:$secondary;
 	}
 }
 

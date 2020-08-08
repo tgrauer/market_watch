@@ -28,12 +28,12 @@
         >Financials</a>
 
         <a 
-        	class="nav-item nav-link {{$data['page'] == 'company_insidertrades' ? 'active' : ''}}" 
+        	class="nav-item nav-link {{$data['page'] == 'company_insider_trades' ? 'active' : ''}}" 
         	id="nav-insidertrades-tab" 
         	href="{{action('CompanyController@getCompanyInsiderTrades', [Session::get('ticker')])}}" 
         	role="tab" 
         	aria-controls="nav-insidertrades" 
-        	aria-selected="{{$data['page'] == 'company_insidertrades' ? 'true' : 'false'}}"
+        	aria-selected="{{$data['page'] == 'company_insider_trades' ? 'true' : 'false'}}"
         >Insider Transactions</a>
     </div>
 </nav>

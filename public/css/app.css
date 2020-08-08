@@ -10987,6 +10987,10 @@ body {
   color: #eee;
 }
 
+.btn.sec_btn {
+  background: #2AD1A3 !important;
+}
+
 .jumbotron {
   background: url(/assets/img/stock_charts.jpg);
   width: 100%;
@@ -10996,6 +11000,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
+  padding-top: 45px;
+  padding-bottom: 20px;
 }
 
 .jumbotron .search_form input {
@@ -11025,7 +11031,7 @@ body {
 
 .jumbotron .results .list-group-item:hover {
   background: #0d0d0d;
-  color: #00A1C3;
+  color: #0f478A;
 }
 
 .current_price_down,
@@ -11038,25 +11044,27 @@ body {
   color: #42A458;
 }
 
-nav.navbar {
-  background: #00A1C3;
+nav.navbar.navbar-dark {
+  background: #0f478A !important;
   color: #fff;
 }
 
-nav.navbar .navbar-brand {
+nav.navbar.navbar-dark .navbar-brand {
   color: #fff;
 }
 
 .todays_earnings .card-header h4,
 .top_gainers .card-header h4,
-.top_losers .card-header h4 {
+.top_losers .card-header h4,
+.most_active .card-header h4 {
   font-size: 18px;
   font-weight: 600;
 }
 
 .todays_earnings .card-body .list-group-item,
 .top_gainers .card-body .list-group-item,
-.top_losers .card-body .list-group-item {
+.top_losers .card-body .list-group-item,
+.most_active .card-body .list-group-item {
   font-size: 13px;
   border-left: none;
   border-right: none;
@@ -11068,21 +11076,35 @@ nav.navbar .navbar-brand {
 .top_gainers .card-body .list-group-item:hover > .company_name,
 .top_gainers .card-body .list-group-item:hover > .ticker,
 .top_losers .card-body .list-group-item:hover > .company_name,
-.top_losers .card-body .list-group-item:hover > .ticker {
-  color: #00A1C3;
+.top_losers .card-body .list-group-item:hover > .ticker,
+.most_active .card-body .list-group-item:hover > .company_name,
+.most_active .card-body .list-group-item:hover > .ticker {
+  color: #0f478A;
 }
 
 .todays_earnings .card-body .list-group-item .ticker,
 .top_gainers .card-body .list-group-item .ticker,
-.top_losers .card-body .list-group-item .ticker {
+.top_losers .card-body .list-group-item .ticker,
+.most_active .card-body .list-group-item .ticker {
   font-weight: 600;
 }
 
 .todays_earnings .card-body .btn,
 .top_gainers .card-body .btn,
-.top_losers .card-body .btn {
+.top_losers .card-body .btn,
+.most_active .card-body .btn {
   margin: 0 auto;
   display: block;
+}
+
+.most_active {
+  height: 100%;
+  max-height: 320px;
+  overflow-y: hidden;
+}
+
+.most_active h4 {
+  color: #2AD1A3;
 }
 
 .company_profile h2.comp_name {
