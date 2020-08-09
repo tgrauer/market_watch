@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($data);?>
+{{-- <?php dd($data);?> --}}
 
 <div class="container company_profile">
     <div class="row">

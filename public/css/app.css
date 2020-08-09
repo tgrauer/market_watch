@@ -11044,6 +11044,10 @@ body {
   color: #42A458;
 }
 
+span.change_percent {
+  font-weight: 600;
+}
+
 nav.navbar.navbar-dark {
   background: #0f478A !important;
   color: #fff;
@@ -11059,6 +11063,7 @@ nav.navbar.navbar-dark .navbar-brand {
 .most_active .card-header h4 {
   font-size: 18px;
   font-weight: 600;
+  color: #555;
 }
 
 .todays_earnings .card-body .list-group-item,
@@ -11100,11 +11105,7 @@ nav.navbar.navbar-dark .navbar-brand {
 .most_active {
   height: 100%;
   max-height: 320px;
-  overflow-y: hidden;
-}
-
-.most_active h4 {
-  color: #2AD1A3;
+  overflow-y: scroll;
 }
 
 .company_profile h2.comp_name {

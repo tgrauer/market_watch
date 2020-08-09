@@ -27,6 +27,7 @@ class HomeController extends Controller
     	$top_gainers = $this->top_gainers();
     	$top_losers = $this->top_losers();
     	$most_active = $this->most_active();
+        $upcoming_ipos = $this->upcoming_ipos();
 
     	$data = [
     		'news' => $news,
@@ -35,7 +36,8 @@ class HomeController extends Controller
             'unemployment_rate' => $unemployment_rate,
             'top_gainers' => $top_gainers,
             'top_losers' => $top_losers,
-            'most_active' => $most_active
+            'most_active' => $most_active,
+            'upcoming_ipos' => $upcoming_ipos,
         ];
 
         return view('home')->with($data);
@@ -79,6 +81,13 @@ class HomeController extends Controller
 
     public function most_active()
     {
-    	return $this->api->sendRequest('/stock/market/list/most_active/', 'displayPercent=true');
+    	return $this->api->sendRequest('/stock/market/list/mostactive/', 'displayPercent=true');
+    }
+
+    public function upcoming_ipos()
+    {
+        return $this->api->sendRequest('/stock/market/today-ipos');
+        ///stock/market/upcoming-ipos
     }
 }
+

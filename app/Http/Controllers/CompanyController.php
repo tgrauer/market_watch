@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Util\IEXCloud;
+use App\Traits\StockTraits;
 use Session;
 use Redirect;
 use Carbon\Carbon;
 
 class CompanyController extends Controller
 {
+
+    use StockTraits;
 
 	protected $api;
 
@@ -88,46 +91,6 @@ class CompanyController extends Controller
     {
         return $this->api->sendRequest('/stock/'.$ticker.'/recommendation-trends');
     }
-
-    private function check_volume($isUSMarketOpen, $latestVolume, $previousVolume)
-    {
-        if($isUSMarketOpen){
-            return $latestVolume;
-        }
-
-        return $previousVolume;
-    }
-
-    private function convert_timestamp($timestamp)
-    {
-        return gmdate("n-j-Y", $timestamp);
-    }
-
-    private function abbreviate_number($number)
-    {
-        if ($number > 999 && $number < 1000000){
-            $number_prefix = round($number/1000, 2);
-            $number_suffix = "K";
-        }
-
-        if ($number > 999999 && $number < 1000000000){
-            $number_prefix = round($number/1000000, 2);
-            $number_suffix = "M";
-        }
-
-        if ($number > 999999999 && $number < 1000000000000){
-            $number_prefix = round($number/1000000000, 2);
-            $number_suffix = "B";
-        }
-
-        if ($number > 999999999999){
-            $number_prefix = round($number/1000000000000, 2);
-            $number_suffix = "T";
-        }
-
-        return $number_prefix . $number_suffix;
-    }
-
 }
 
 // USE MARKET to query multiple companies
