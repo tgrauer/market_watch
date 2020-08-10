@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8 mt50">
                 <h1 class="display-4">Fluid jumbotron</h1>
                 <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
 
@@ -34,7 +34,7 @@
                                 @foreach($most_active as $stk)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$stk['symbol']])}}"><span class="company_name">{{$stk['companyName']}}</span> - <span class="ticker">{{$stk['symbol']}}</span>
 
-                                    <span class="change_percent float-right {{$stk['changePercent']>0 ? 'positive' : 'negative'}}">{{$stk['changePercent']>0 ? '+' : '-'}}{{$stk['changePercent']}}%</span>
+                                    <span class="change_percent float-right {{$stk['changePercent']>0 ? 'positive' : 'negative'}}">{{$stk['changePercent']>0 ? '+' : '-'}}{{round($stk['changePercent'], 2)}}%</span>
                                     </a> 
                                 @endforeach
                             @endif                       

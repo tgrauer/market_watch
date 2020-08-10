@@ -10926,7 +10926,7 @@ a.text-dark:focus {
 body {
   font-size: 13px;
   font-weight: 400;
-  background: #eee;
+  background: #F1F4FA;
   color: #555;
   font-family: "Open Sans", sans-serif;
 }
@@ -10991,16 +10991,116 @@ body {
   background: #2AD1A3 !important;
 }
 
+nav.navbar {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#12c1ed+0,1172ef+100 */
+  background: #12c1ed;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #12c1ed 0%, #1172ef 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#12c1ed", endColorstr="#1172ef",GradientType=1 );
+  /* IE6-9 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#3aafa9+0,2b7a78+100 */
+}
+
+nav.navbar li.nav-item a {
+  color: #eee;
+}
+
+nav.navbar li.nav-item.active a {
+  color: #fff;
+}
+
+nav.navbar .navbar-brand {
+  color: #fff;
+}
+
+nav.navbar form {
+  margin-left: 50px;
+}
+
+nav.navbar form .input-group {
+  color: #fff;
+  background: #1172ef;
+  border: none;
+  border-bottom: 1px solid #12cbef;
+}
+
+nav.navbar form .input-group i {
+  color: #fff;
+}
+
+nav.navbar form .input-group input.form-control {
+  background: none;
+  border: none;
+  padding-left: 5px;
+  color: #fff;
+  font-size: 13px;
+}
+
+nav.navbar form .input-group input.form-control:focus {
+  border-color: inherit;
+  box-shadow: none;
+}
+
+nav.navbar form .input-group .input-group-text.bg-transparent {
+  border: none;
+}
+
+nav.navbar .nav-link {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+nav.navbar ::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #eee;
+  opacity: 1;
+  /* Firefox */
+}
+
+nav.navbar :-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #eee;
+  opacity: 1;
+  /* Firefox */
+}
+
+nav.navbar ::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #eee;
+  opacity: 1;
+  /* Firefox */
+}
+
+nav.navbar ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #eee;
+  opacity: 1;
+  /* Firefox */
+}
+
+nav.navbar :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #eee;
+}
+
+nav.navbar ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #eee;
+}
+
 .jumbotron {
-  background: url(/assets/img/stock_charts.jpg);
+  background: url(/assets/img/market.jpg);
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
-  padding-top: 45px;
+  padding-top: 40px;
   padding-bottom: 20px;
 }
 
@@ -11046,15 +11146,6 @@ body {
 
 span.change_percent {
   font-weight: 600;
-}
-
-nav.navbar.navbar-dark {
-  background: #0f478A !important;
-  color: #fff;
-}
-
-nav.navbar.navbar-dark .navbar-brand {
-  color: #fff;
 }
 
 .todays_earnings .card-header h4,
@@ -11104,7 +11195,10 @@ nav.navbar.navbar-dark .navbar-brand {
 
 .most_active {
   height: 100%;
-  max-height: 320px;
+  max-height: 415px;
+}
+
+.most_active .card-body {
   overflow-y: scroll;
 }
 
@@ -11133,6 +11227,61 @@ nav.navbar.navbar-dark .navbar-brand {
 }
 
 .company_profile .company_details .list-group-item {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.company_stock_highlights .inner {
+  background: #0f478A;
+  color: #fff;
+  padding: 8px 5px;
+  border-radius: 3px;
+}
+
+.company_stock_highlights .inner h4 {
+  text-align: center;
+  font-size: 15px;
+}
+
+.wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+.page_wrapper {
+  min-width: 100vw;
+  border-top: 2px solid #fff;
+}
+
+.wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  .page_wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
 }
 

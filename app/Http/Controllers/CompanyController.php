@@ -46,8 +46,8 @@ class CompanyController extends Controller
             'page'              => 'company_profile',
         ];
 
-    	return view('company.company', compact('data'));
-        // return view('company.company')->with($data); /// why doesnt this work
+    	// return view('company.company')->with($data);
+        return view('company.company')->with($data); /// why doesnt this work
     }
 
 
@@ -60,7 +60,7 @@ class CompanyController extends Controller
             'page'  => 'company_dividends'
         ];
 
-        return view('company.dividends', compact('data'));
+        return view('company.dividends')->with($data);
     }
 
     public function getCompanyFinancials($ticker)
@@ -72,7 +72,7 @@ class CompanyController extends Controller
             'page' => 'company_financials'
         ];
 
-        return view('company.financials', compact('data'));
+        return view('company.financials')->with($data);
     }
 
     public function getCompanyInsiderTrades($ticker)
@@ -84,7 +84,7 @@ class CompanyController extends Controller
             'page' => 'company_insider_trades'
         ];
 
-        return view('company.insidertrades', compact('data'));
+        return view('company.insidertrades')->with($data);
     }
 
     public function analyst_ratings($ticker)

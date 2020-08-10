@@ -38,6 +38,7 @@ class HomeController extends Controller
             'top_losers' => $top_losers,
             'most_active' => $most_active,
             'upcoming_ipos' => $upcoming_ipos,
+            'page'  => 'home',
         ];
 
         return view('home')->with($data);
