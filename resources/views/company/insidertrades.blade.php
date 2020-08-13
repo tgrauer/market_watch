@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($data['company_insider_trades']);?> --}}
+<?php dd($company_insider_trades);?>
 
 <div class="d-flex wrapper">
 
@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-        
+
         <div class="row">
         
             <div class="col-sm-12 mt50">

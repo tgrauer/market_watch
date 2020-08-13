@@ -37279,6 +37279,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var Market_Watch = {
   init: function init() {
     this.event_handlers();
+    this.range_bar();
   },
   event_handlers: function event_handlers() {
     $('.search').on('keyup', this.search);
@@ -37311,6 +37312,22 @@ var Market_Watch = {
 
         $('.results').append(results).show();
       }
+    });
+  },
+  range_bar: function range_bar() {
+    var low = $('.range_bar .low').text();
+    var high = $('.range_bar .high').text();
+    var current = $('.bar').data('current');
+    low = low.substr(1);
+    low = low.replace(/,/g, '');
+    high = high.substr(1);
+    high = high.replace(/,/g, '');
+    var x = high - current;
+    var range = high - low;
+    x = x / range * 100;
+    var ml = 98 - x;
+    $('.marker').css({
+      'margin-left': ml + '%'
     });
   }
 };

@@ -25,43 +25,8 @@
     <div id="app">
 
         <main>
-            <nav class="navbar navbar-expand-md {{$page}}">
-                <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Market Watch') }}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            @include('shared.nav')
 
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Disabled</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <form class="form-inline md-form my-0 has-search">
-                        <div class="input-group">
-                            <span class="input-group-prepend">
-                                <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
-                            </span>
-                            <input class="form-control py-2" type="search" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
-            </nav>
             @yield('content')
         </main>
     </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($data);?> --}}
+<?php dd($company_dividends);?>
 
 <div class="d-flex wrapper">
     

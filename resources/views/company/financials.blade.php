@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($data['company_financials']);?> --}}
+<?php dd($company_financials);?>
 
 <div class="d-flex wrapper">
 
@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-        
+
         <div class="row">
 
             <div class="col-sm-12 mt50">

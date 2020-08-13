@@ -7,13 +7,10 @@
 // Compass
 @import "~compass-sass-mixins/lib/compass";
 
-$primary:#0f478A;
-$secondary:#2AD1A3;
-$red:tomato;
-$green:#42A458;
+
 
 body{
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 400;
 	background: #F1F4FA;
 	color:#555;
@@ -33,6 +30,25 @@ body{
 	::-ms-input-placeholder { /* Microsoft Edge */
 	  color: $color;
 	}
+}
+
+@mixin blue_grad(){
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#34a1d3+0,1d64af+100 */
+	background: #34a1d3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #34a1d3 0%, #1d64af 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #34a1d3 0%,#1d64af 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #34a1d3 0%,#1d64af 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a1d3', endColorstr='#1d64af',GradientType=0 ); /* IE6-9 */
+
+}
+
+@mixin green_grad(){
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#3aafa9+0,2b7a78+100 */
+	background: #3aafa9; /* Old browsers */
+	background: -moz-linear-gradient(top,  #3aafa9 0%, #2b7a78 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #3aafa9 0%,#2b7a78 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #3aafa9 0%,#2b7a78 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3aafa9', endColorstr='#2b7a78',GradientType=0 ); /* IE6-9 */
 }
 
 .mt0{margin-top: 0 !important;}
@@ -57,19 +73,7 @@ body{
 
 nav.navbar{
 	
-	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#12c1ed+0,1172ef+100 */
-	background: #12c1ed; /* Old browsers */
-	background: -moz-linear-gradient(left,  #12c1ed 0%, #1172ef 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left,  #12c1ed 0%,#1172ef 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right,  #12c1ed 0%,#1172ef 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#12c1ed', endColorstr='#1172ef',GradientType=1 ); /* IE6-9 */
-
-	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#3aafa9+0,2b7a78+100 */
-	//background: #3aafa9; /* Old browsers */
-	//background: -moz-linear-gradient(top,  #3aafa9 0%, #2b7a78 100%); /* FF3.6-15 */
-	//background: -webkit-linear-gradient(top,  #3aafa9 0%,#2b7a78 100%); /* Chrome10-25,Safari5.1-6 */
-	//background: linear-gradient(to bottom,  #3aafa9 0%,#2b7a78 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3aafa9', endColorstr='#2b7a78',GradientType=0 ); /* IE6-9 */
+	@include blue_grad();
 
 	li.nav-item{
 		a{color:#eee;}
@@ -82,13 +86,15 @@ nav.navbar{
 	}
 
 	form{
-		margin-left: 50px;
 
 		.input-group{
 			color:#fff;
-			background: #1172ef;
+			background: lighten(#1d64af, 2%);
 			border:none;
-			border-bottom: 1px solid #12cbef;
+			border-bottom: 1px solid lighten(#1561ad, 20%);
+			@include border-radius(30px);
+
+			&:focus-within{@include box-shadow(0 2px 3px lighten(#1561ad, 15%));}
 
 			i{color:#fff;}
 			input.form-control{
@@ -101,7 +107,8 @@ nav.navbar{
 				&:focus{
 					border-color: inherit;
 					-webkit-box-shadow: none;
-					box-shadow: none;
+					@include box-shadow(none);
+
 				}
 			}
 			.input-group-text.bg-transparent{border: none;}
@@ -239,6 +246,7 @@ span.change_percent{font-weight: 600;}
 
 
 .company_stock_highlights{
+	
 	.inner{
 		background: $primary;
 		color:#fff;
@@ -246,11 +254,20 @@ span.change_percent{font-weight: 600;}
 		@include border-radius(3px);
 
 		h4{
-			text-align: center;
-			font-size: 15px;
-			
+			font-size: 12px;
+			font-weight: 500;
+		}
+
+		p{
+			font-size: 22px;
+			font-weight: 700;
 		}
 	}
+
+	&:nth-child(1) .inner{background: $lightblue;}
+	&:nth-child(2) .inner{background: $reddish;}
+	&:nth-child(3) .inner{background: $bluegreen;}
+	&:nth-child(4) .inner{background: $red;}
 }
 
 .wrapper {
@@ -258,45 +275,87 @@ span.change_percent{font-weight: 600;}
  }
 
 #sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -15rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
+	min-height: 100vh;
+	margin-left: -15rem;
+	@include transition(margin .25s ease-out);
+
+	.list-group-item{
+		font-weight: 600;
+		&.active{
+			background:$secondary;
+			color:#fff;
+			border-color: darken($secondary, 10%);
+		}
+	}
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+	padding: 0.875rem 1.25rem;
+	font-size: 1.2rem;
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+ 	width: 15rem;
 }
 
 .page_wrapper {
-  min-width: 100vw;
-  border-top: 2px solid #fff;
+	min-width: 100vw;
+	border-top: 2px solid #fff;
 }
 
 .wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
+	margin-left: 0;
+}
+
+.sidemenu_btn{
+	color:$bluegreen;
+	@include opacity(1);
+
+	&:hover{color: darken($bluegreen, 10%);}
+}
+
+.range{
+	p{font-weight: 600;font-size: 12px;}
+}
+
+.range_bar{
+	
+	span{width: 9%;}
+
+	.bar{
+		width: 73%;
+		height: 12px;
+		background: #ccc;
+		margin-left: 1%;
+		margin-right: 1%;
+
+		.marker{
+			i{
+				position: relative;
+				bottom:10px;
+				font-size: 22px;
+				color:$green;
+				width: 15px;
+				text-align: center;
+			    display: inline-block;
+			}
+		}
+	}
 }
 
 @media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
+	#sidebar-wrapper {
+		margin-left: 0;
+	}
 
-  .page_wrapper {
-    min-width: 0;
-    width: 100%;
-  }
+	.page_wrapper {
+		min-width: 0;
+		width: 100%;
+	}
 
-  .wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+	.wrapper.toggled #sidebar-wrapper {
+		margin-left: -15rem;
+	}
 }
 
 
