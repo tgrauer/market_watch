@@ -37317,7 +37317,7 @@ var Market_Watch = {
   range_bar: function range_bar() {
     var low = $('.range_bar .low').text();
     var high = $('.range_bar .high').text();
-    var current = $('.bar').data('current');
+    var current = $('.progress-bar').data('current');
     low = low.substr(1);
     low = low.replace(/,/g, '');
     high = high.substr(1);
@@ -37325,10 +37325,11 @@ var Market_Watch = {
     var x = high - current;
     var range = high - low;
     x = x / range * 100;
-    var ml = 98 - x;
-    $('.marker').css({
-      'margin-left': ml + '%'
-    });
+    var ml = 98 - x; // $('.marker').css({'margin-left': ml+'%'});
+
+    $('.progress-bar').css({
+      'width': ml + '%'
+    }).attr('aria-valuenow', ml);
   }
 };
 $(document).ready(function () {

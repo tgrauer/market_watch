@@ -12,7 +12,7 @@
 body{
 	font-size: 14px;
 	font-weight: 400;
-	background: #F1F4FA;
+	background: darken(#F1F4FA, 2%);
 	color:#555;
 	font-family: 'Open Sans', sans-serif;
 }
@@ -63,6 +63,8 @@ body{
 .mb30{margin-bottom: 30px !important;}
 .mb50{margin-bottom: 50px !important;}
 .p0{padding: 0 !important;}
+
+.cb{clear: both;}
 
 .hidetilloaded{display: none;}
 
@@ -251,15 +253,16 @@ span.change_percent{font-weight: 600;}
 		background: $primary;
 		color:#fff;
 		padding: 8px 5px;
+		@include border-radius(8px);
 		@include border-radius(3px);
 
 		h4{
-			font-size: 12px;
+			font-size: 13px;
 			font-weight: 500;
 		}
 
 		p{
-			font-size: 22px;
+			font-size: 25px;
 			font-weight: 700;
 		}
 	}
@@ -310,39 +313,41 @@ span.change_percent{font-weight: 600;}
 .sidemenu_btn{
 	color:$bluegreen;
 	@include opacity(1);
-
 	&:hover{color: darken($bluegreen, 10%);}
 }
 
-.range{
-	p{font-weight: 600;font-size: 12px;}
+
+.bg-gradient-success {
+    background: #1b9e3e!important;
+    background: linear-gradient(45deg,#2eb85c 0%,#1b9e3e 100%)!important;
+    border-color: #1b9e3e!important;
 }
 
-.range_bar{
+.range{
+
+	p{font-weight: 600;font-size: 13px;}
 	
-	span{width: 9%;}
+	.progress{
+		background: #bbb;
+		width: 70%;
+		max-width: 250px;
+	}
+	.progress-xs{
+		height: 6px;
+	}
 
-	.bar{
-		width: 73%;
-		height: 12px;
-		background: #ccc;
-		margin-left: 1%;
-		margin-right: 1%;
-
-		.marker{
-			i{
-				position: relative;
-				bottom:10px;
-				font-size: 22px;
-				color:$green;
-				width: 15px;
-				text-align: center;
-			    display: inline-block;
-			}
-		}
+	.range_bar{
+		.low small, .high small{position: relative;top:6px;font-size: 13px;font-weight: 600;}
 	}
 }
 
+.section_heading{
+	border-bottom: 2px solid #ccc;
+}
+
+//////////////////////////////////////////////////////////////////////
+////	Media Queries ////
+//////////////////////////////////////////////////////////////////////
 @media (min-width: 768px) {
 	#sidebar-wrapper {
 		margin-left: 0;
