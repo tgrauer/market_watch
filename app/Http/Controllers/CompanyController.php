@@ -26,11 +26,20 @@ class CompanyController extends Controller
     {
 
         $company_profile = $this->api->sendRequest('stock/'.$ticker.'/batch', 'types=company,quote,news,logo,chart&range=5d&last=10');
+        $analyst_ratings = $this->analyst_ratings($ticker);
+        $advanced_stats = $this->advanced_stats($ticker);
 
         $company_profile['quote']['marketCap'] = $this->abbreviate_number($company_profile['quote']['marketCap']);
         $company_profile['quote']['volume'] = $this->check_volume($company_profile['quote']['isUSMarketOpen'] !==null ? $company_profile['quote']['isUSMarketOpen'] : false, $company_profile['quote']['latestVolume'], $company_profile['quote']['previousVolume']);
 
-        $analyst_ratings = $this->analyst_ratings($ticker);
+///////////////////////////////////////////////////////////////
+        // random error Undefined index: currentDebt
+        $advanced_stats['currentDebt'] = $this->abbreviate_number($advanced_stats['currentDebt']);
+//////////////////////////////////////////////////////////////
+        $advanced_stats['revenue'] = $this->abbreviate_number($advanced_stats['revenue']);
+        $advanced_stats['grossProfit'] = $this->abbreviate_number($advanced_stats['grossProfit']);
+        $advanced_stats['totalRevenue'] = $this->abbreviate_number($advanced_stats['totalRevenue']);
+        $advanced_stats['totalCash'] = $this->abbreviate_number($advanced_stats['totalCash']);
 
         Session::put('ticker', $ticker);
         Session::put('company_name', $company_profile['quote']['companyName']);
@@ -42,6 +51,7 @@ class CompanyController extends Controller
 
         $data=[
             'company_profile'   => $company_profile,
+            'advanced_stats'    => $advanced_stats,
             'analyst_ratings'   => $analyst_ratings,
             'page'              => 'company_profile',
         ];
@@ -90,6 +100,11 @@ class CompanyController extends Controller
     public function analyst_ratings($ticker)
     {
         return $this->api->sendRequest('/stock/'.$ticker.'/recommendation-trends');
+    }
+
+    public function advanced_stats($ticker)
+    {
+        return $this->api->sendRequest('/stock/'.$ticker.'/advanced-stats');
     }
 }
 

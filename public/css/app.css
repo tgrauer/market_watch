@@ -11276,6 +11276,7 @@ span.change_percent {
   min-height: 100vh;
   margin-left: -15rem;
   transition: margin 0.25s ease-out;
+  border-right: 1px solid #e9eef7 !important;
 }
 
 #sidebar-wrapper .list-group-item {
@@ -11283,9 +11284,13 @@ span.change_percent {
 }
 
 #sidebar-wrapper .list-group-item.active {
-  background: #1CBC9B;
-  color: #fff;
-  border-color: #159076;
+  background: #e9eef7;
+  color: #1CBC9B;
+  border-color: #ddd;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+  color: #1CBC9B;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -11314,6 +11319,11 @@ span.change_percent {
 
 .sidemenu_btn:hover {
   color: #168e89;
+}
+
+.sidemenu_btn:focus {
+  outline: none;
+  border: none;
 }
 
 .bg-gradient-success {
@@ -11347,6 +11357,16 @@ span.change_percent {
 
 .section_heading {
   border-bottom: 2px solid #ccc;
+}
+
+.key_data h4 {
+  font-size: 15px;
+  background: #1CBC9B;
+  color: #fff;
+}
+
+.key_data h6 {
+  font-size: 13px;
 }
 
 @media (min-width: 768px) {

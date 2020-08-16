@@ -6,6 +6,10 @@ trait StockTraits {
 
 	private function abbreviate_number($number)
 	{
+		
+		if(empty($number)){
+			return '';
+		}
 	    if ($number > 999 && $number < 1000000){
 	        $number_prefix = round($number/1000, 2);
 	        $number_suffix = "K";

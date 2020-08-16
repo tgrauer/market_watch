@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($company_profile);?> --}}
+{{-- <?php dd($advanced_stats);?> --}}
 
 <div class="d-flex wrapper">
     
@@ -28,7 +28,7 @@
                 <div class="row p0">
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
-                            <p class="text-left pt-1 mb-1">{{$company_profile['quote']['marketCap']}}</p>
+                            <p class="text-left pt-1 mb-1">${{$company_profile['quote']['marketCap']}}</p>
                             <h4 class="mb-2 text-left">Market Cap</h4>
                         </div>
                     </div>
@@ -55,9 +55,25 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-3 col-xs-12 mt-2 px-2 range">
-                <div class="range_bar d-flex justify-content-center">
+        <div class="row mt-3">
+            <div class="col-sm-3 col-xs-12 mt-2 px-2 mr-2 range">
+                <div class="range_bar d-flex justify-content-start">
+                    <div class="text-muted text-uppercase float-left font-weight-bold low text-left mr-1"><small>@money($company_profile['quote']['low'] * 100)</small></div>
+                    
+                    <div class="progress progress-xs mt-3 mb-3 float-left">
+                        <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-current="{{$company_profile['quote']['close']}}"></div>
+                    </div>
+
+                    <div class="text-muted text-uppercase font-weight-bold float-left high text-right ml-1"><small>@money($company_profile['quote']['high'] * 100)</small></div>
+                </div>
+
+                <div class="cb"><p class="text-center">Day Range</p></div>
+            </div>
+
+            <div class="col-sm-3 col-xs-12 mt-2 px-2 ml-5 range">
+                <div class="range_bar d-flex justify-content-start">
                     <div class="text-muted text-uppercase float-left font-weight-bold low text-left mr-1"><small>@money($company_profile['quote']['week52Low'] * 100)</small></div>
                     
                     <div class="progress progress-xs mt-3 mb-3 float-left">
@@ -66,24 +82,87 @@
 
                     <div class="text-muted text-uppercase font-weight-bold float-left high text-right ml-1"><small>@money($company_profile['quote']['week52High'] * 100)</small></div>
                 </div>
+
                 <div class="cb"><p class="text-center">52 Week Range</p></div>
-
             </div>
+        </div>
 
+        <div class="row">
             <div class="col-sm-12">
                 @if(!empty($company_profile))
                     
                     <div class="tab-content mt30" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <h4>Company Profile</h4>
 
                             <div class="row">
                                 <div class="col-sm-8">
+                                    <h4>Company Profile</h4>
                                     <p>{{$company_profile['company']['description']}}</p>
 
-                                    <section class="my-4">
-                                        <h2 class="section_heading">Key Data</h2>
-                                    </section>
+                                    <div class="row mt-5 key_data">
+                                        <div class="col-sm-12"><h2 class="section_heading mb-4">Key Data</h2></div>
+                                        
+                                        <div class="col-sm-6">
+                                            <ul class="list-group list-group-flush">
+                                                <h4 class="font-weight-bold py-1 px-2">Dividends</h4>
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Dividend Rate</h6>
+                                                    <span class="float-right text-right">@money($advanced_stats['ttmDividendRate'] * 100)</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Dividend Yield</h6>
+                                                    <span class="float-right text-right">{{round($advanced_stats['dividendYield'], 4) * 100 }}%</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Ex-Dividend Date</h6>
+                                                    <span class="float-right text-right">{{Carbon\Carbon::parse($advanced_stats['exDividendDate'])->toFormattedDateString()}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Next Dividend Pay Date</h6>
+                                                    <span class="float-right text-right">{{!empty($advanced_stats['nextDividendDate']) ? Carbon\Carbon::parse($advanced_stats['nextDividendDate'])->toFormattedDateString() : 'N/A'}}</span>
+                                                </div>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <ul class="list-group list-group-flush">
+
+                                                <h4 class="font-weight-bold py-1 px-2">Finances</h4>
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Gross Profit <a href="#" data-toggle="tooltip" data-placement="right" title="Some tooltip text!"><i class="fa fa-question-circle"></i></a></h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['grossProfit'] ? '$'.$advanced_stats['grossProfit'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Total Cash <a href="#" data-toggle="tooltip" data-placement="right" title="Some tooltip text!"><i class="fa fa-question-circle"></i></a></h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['totalCash'] ? '$'.$advanced_stats['totalCash'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Revenue</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['revenue'] ? '$'.$advanced_stats['revenue'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Total Revenue</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['totalRevenue'] ? '$'.$advanced_stats['totalRevenue'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Current Debt</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['currentDebt'] ? '$'.$advanced_stats['currentDebt'] :'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Debt To Equity</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['debtToEquity'] ? $advanced_stats['debtToEquity'].'%' : 'N/A'}}</span>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <div class="col-sm-4">

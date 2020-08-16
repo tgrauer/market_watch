@@ -281,14 +281,17 @@ span.change_percent{font-weight: 600;}
 	min-height: 100vh;
 	margin-left: -15rem;
 	@include transition(margin .25s ease-out);
+	border-right: 1px solid #e9eef7 !important;
 
 	.list-group-item{
 		font-weight: 600;
 		&.active{
-			background:$secondary;
-			color:#fff;
-			border-color: darken($secondary, 10%);
+			background:darken(#F1F4FA, 2%);
+			color:$secondary;
+			border-color: #ddd;
 		}
+
+		&:hover{color:$secondary;}
 	}
 }
 
@@ -314,6 +317,7 @@ span.change_percent{font-weight: 600;}
 	color:$bluegreen;
 	@include opacity(1);
 	&:hover{color: darken($bluegreen, 10%);}
+	&:focus{outline:none;border:none;}
 }
 
 
@@ -343,6 +347,16 @@ span.change_percent{font-weight: 600;}
 
 .section_heading{
 	border-bottom: 2px solid #ccc;
+}
+
+.key_data{
+	h4{
+		font-size: 15px;
+		background: $secondary;
+		color:#fff;
+	}
+
+	h6{font-size: 13px;}
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -1,16 +1,19 @@
 require('./bootstrap');
 
 var Market_Watch = {
-	init:function(){
+	init(){
 		this.event_handlers();
-		this.range_bar();
+
+		$('.range_bar').each(function(){
+			Market_Watch.range_bar(this);
+		})
 	},
 
-	event_handlers:function(){
+	event_handlers(){
 		$('.search').on('keyup', this.search);
 	},
 
-	search:function(e){
+	search(e){
 		e.preventDefault();
 		var search_term = $(this).val();
 		
@@ -45,10 +48,10 @@ var Market_Watch = {
 		})
 	},
 
-	range_bar(){
-		var low = $('.range_bar .low').text();
-		var high = $('.range_bar .high').text();
-		var current = $('.progress-bar').data('current');
+	range_bar(that){
+		var low = $(that).find('.low small').text();
+		var high = $(that).find('.high small').text();
+		var current = $(that).find('.progress-bar').data('current');
 		low = low.substr(1);
 		low = low.replace(/,/g, '');
 		high = high.substr(1);
@@ -56,17 +59,25 @@ var Market_Watch = {
 		var x = high - current;
 		var range = high - low;
 		x = x / range * 100;
-		var ml = 98 - x ;
-
-		// $('.marker').css({'margin-left': ml+'%'});
-		$('.progress-bar').css({'width': ml+ '%'}).attr('aria-valuenow', ml);
+		var width = Math.round(98 - x) ;
+		$(that).find('.progress-bar').css({'width': width+ '%'}).attr('aria-valuenow', width);
 	}
 }
 
 $(document).ready(function(){
 	Market_Watch.init();
 	$("#menu-toggle").click(function(e) {
-	      e.preventDefault();
-	      $(".wrapper").toggleClass("toggled");
-	    });
+	    e.preventDefault();
+	    $(".wrapper").toggleClass("toggled");
+	});
+
+	$(function () {
+		$('[data-toggle="tooltip"]').on('click', function(e){
+			e.preventDefault();
+		});
+		
+		$('[data-toggle="tooltip"]').tooltip({
+			delay:250,
+		});
+	});
 });
