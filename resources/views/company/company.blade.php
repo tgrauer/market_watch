@@ -96,13 +96,10 @@
 
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h4>Company Profile</h4>
-                                    <p>{{$company_profile['company']['description']}}</p>
-
-                                    <div class="row mt-5 key_data">
+                                    <div class="row key_data">
                                         <div class="col-sm-12"><h2 class="section_heading mb-4">Key Data</h2></div>
                                         
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6 mb-4">
                                             <ul class="list-group list-group-flush">
                                                 <h4 class="font-weight-bold py-1 px-2">Dividends</h4>
                                                 <div class="d-flex w-100 py-1 justify-content-between border-bottom">
@@ -127,13 +124,18 @@
                                             </ul>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6 mb-4">
                                             <ul class="list-group list-group-flush">
 
                                                 <h4 class="font-weight-bold py-1 px-2">Finances</h4>
                                                 <div class="d-flex w-100 py-1 justify-content-between border-bottom">
                                                     <h6 class="mb-0 pt-1">Gross Profit <a href="#" data-toggle="tooltip" data-placement="right" title="Some tooltip text!"><i class="fa fa-question-circle"></i></a></h6>
                                                     <span class="float-right text-right">{{$advanced_stats['grossProfit'] ? '$'.$advanced_stats['grossProfit'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Profit Margin <a href="#" data-toggle="tooltip" data-placement="right" title="Some tooltip text!"><i class="fa fa-question-circle"></i></a></h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['profitMargin'] ? round($advanced_stats['profitMargin'], 2) : 'N/A'}}</span>
                                                 </div>
 
                                                 <div class="d-flex w-100 py-1 justify-content-between border-bottom">
@@ -150,7 +152,27 @@
                                                     <h6 class="mb-0 pt-1">Total Revenue</h6>
                                                     <span class="float-right text-right">{{$advanced_stats['totalRevenue'] ? '$'.$advanced_stats['totalRevenue'] : 'N/A'}}</span>
                                                 </div>
+                                            </ul>
+                                        </div>
 
+                                        <div class="col-sm-6 mb-4">
+                                            <ul class="list-group list-group-flush">
+                                                <h4 class="font-weight-bold py-1 px-2">Sales &amp; Book Value</h4>
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Price / Book</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['debtToEquity'] ? round($advanced_stats['priceToBook'], 2) : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Price / Sales</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['debtToEquity'] ? round($advanced_stats['priceToSales'], 2) : 'N/A'}}</span>
+                                                </div>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-sm-6 mb-4">
+                                            <ul class="list-group list-group-flush">
+                                                <h4 class="font-weight-bold py-1 px-2">Debt</h4>
                                                 <div class="d-flex w-100 py-1 justify-content-between border-bottom">
                                                     <h6 class="mb-0 pt-1">Current Debt</h6>
                                                     <span class="float-right text-right">{{$advanced_stats['currentDebt'] ? '$'.$advanced_stats['currentDebt'] :'N/A'}}</span>
@@ -162,18 +184,71 @@
                                                 </div>
                                             </ul>
                                         </div>
+
+                                        <div class="col-sm-6 mb-4">
+                                            <ul class="list-group list-group-flush">
+                                                <h4 class="font-weight-bold py-1 px-2">Price to Earnings</h4>
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Next Earnings Date</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['nextEarningsDate'] ? Carbon\Carbon::parse($advanced_stats['nextEarningsDate'])->toFormattedDateString() :'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">P/E Ratio</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['peRatio'] ? $advanced_stats['peRatio'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Forward P/E Ratio</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['forwardPERatio'] ? $advanced_stats['forwardPERatio'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">EBITDA</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['EBITDA'] ? '$'. $advanced_stats['EBITDA'] : 'N/A'}}</span>
+                                                </div>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-sm-6 mb-4">
+                                            <ul class="list-group list-group-flush">
+                                                <h4 class="font-weight-bold py-1 px-2">Miscellaneous</h4>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Outstanding Shares</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['sharesOutstanding'] ? $advanced_stats['sharesOutstanding'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Market Cap</h6>
+                                                    <span class="float-right text-right">{{$company_profile['quote']['marketCap'] ? '$'.$company_profile['quote']['marketCap'] : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Beta</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['beta'] ? round($advanced_stats['beta'], 2) : 'N/A'}}</span>
+                                                </div>
+
+                                                <div class="d-flex w-100 py-1 justify-content-between border-bottom">
+                                                    <h6 class="mb-0 pt-1">Put/Call Ratio</h6>
+                                                    <span class="float-right text-right">{{$advanced_stats['putCallRatio'] ? round($advanced_stats['putCallRatio'], 2) : 'N/A'}}</span>
+                                                </div>
+                                            </ul>
+                                        </div>
+
                                     </div>
                                 </div>
                                 
                                 <div class="col-sm-4">
                                     <div class="company_details card">
+                                        <h4 class="px-2 pt-2">{{$company_profile['company']['companyName']}}</h4>
+                                        <p class="p-2">{{$company_profile['company']['description']}}</p>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">{{$company_profile['company']['companyName']}}</li>
                                             <li class="list-group-item">Industry <span class="float-right text-right">{{$company_profile['company']['industry']}}</span></li>
                                             <li class="list-group-item">Sector <span class="float-right text-right">{{$company_profile['company']['sector']}}</span></li>
                                             <li class="list-group-item">Website <span class="float-right text-right">{{$company_profile['company']['website']}}</span></li>
                                             <li class="list-group-item">CEO <span class="float-right text-right">{{$company_profile['company']['CEO']}}</span></li>
-                                            <li class="list-group-item">Employees <span class="float-right text-right">@money($company_profile['company']['employees'] * 100)</span></li>
+                                            <li class="list-group-item">Employees <span class="float-right text-right">{{$company_profile['company']['employees']}}</span></li>
                                             <li class="list-group-item">Address <span class="float-right text-right">{{$company_profile['company']['employees']}} <br>
                                                 {{$company_profile['company']['city']}}, {{$company_profile['company']['state']}} {{$company_profile['company']['zip']}}</span>
                                             </li>

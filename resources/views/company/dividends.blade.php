@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($company_dividends);?>
+{{-- <?php dd($company_dividends);?> --}}
 
 <div class="d-flex wrapper">
     
@@ -12,8 +12,8 @@
         
         <div class="row">
             <div class="col-sm-2">
-                <button type="button" id="menu-toggle" class="close float-left" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" id="menu-toggle" class="close sidemenu_btn float-left mt-2 mb-0" aria-label="Close">
+                    <span><i class="fa fa-bars"></i></span>
                 </button>
             </div>
         </div>
@@ -26,13 +26,41 @@
 
             <div class="col-sm-12">
                 
-                @if(!empty($data['company_dividends']))                
+                @if(!empty($company_dividends))                
                     <div class="tab-content mt30" id="nav-tabContent">
                         
                         <div class="tab-pane fade show active" id="nav-dividends" role="tabpanel" aria-labelledby="nav-dividends-tab">
                             
-                            @if(!empty($data['company_dividends']))
-                                <h4>Dividends</h4>
+                            @if(!empty($company_dividends))
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered dividend_table">
+                                        <thead>
+                                            <tr class="bg-info">
+                                                <th>Declared Date</th>
+                                                <th>Amount</th>
+                                                <th>Frequency</th>
+                                                <th>Ex-Dividend Date</th>
+                                                <th>Record Date</th>
+                                                <th>Payment Date</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach($company_dividends as $div)
+                                                <tr>
+                                                    <td>{{$div['declaredDate']}}</td>
+                                                    <td>@money($div['amount'] * 100)</td>
+                                                    <td>{{$div['frequency']}}</td>
+                                                    <td>{{$div['exDate']}}</td>
+                                                    <td>{{$div['recordDate']}}</td>
+                                                    <td>{{$div['paymentDate']}}</td>
+                                                    <td>{{$div['description']}}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             @else
                                 <div class="alert alert-info" role="alert">
                                     Dividend History information is presently unavailable for this company. This could indicate that the company has never provided a dividend or that a dividend is pending.

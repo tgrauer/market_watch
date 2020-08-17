@@ -40,6 +40,8 @@ class CompanyController extends Controller
         $advanced_stats['grossProfit'] = $this->abbreviate_number($advanced_stats['grossProfit']);
         $advanced_stats['totalRevenue'] = $this->abbreviate_number($advanced_stats['totalRevenue']);
         $advanced_stats['totalCash'] = $this->abbreviate_number($advanced_stats['totalCash']);
+        $advanced_stats['sharesOutstanding'] = $this->abbreviate_number($advanced_stats['sharesOutstanding']);
+        $advanced_stats['EBITDA'] = $this->abbreviate_number($advanced_stats['EBITDA']);
 
         Session::put('ticker', $ticker);
         Session::put('company_name', $company_profile['quote']['companyName']);

@@ -11369,6 +11369,11 @@ span.change_percent {
   font-size: 13px;
 }
 
+.dividend_table th {
+  background: #1CBC9B;
+  color: #fff;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
