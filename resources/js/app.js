@@ -6,7 +6,9 @@ var Market_Watch = {
 
 		$('.range_bar').each(function(){
 			Market_Watch.range_bar(this);
-		})
+		});
+
+		$('body').on('click', this.hide_searchresults);
 	},
 
 	event_handlers(){
@@ -17,7 +19,7 @@ var Market_Watch = {
 		e.preventDefault();
 		var search_term = $(this).val();
 		
-		$('.results').empty();
+		$('.results_cnt').empty();
 
 		$.ajaxSetup({
             headers: {
@@ -43,9 +45,13 @@ var Market_Watch = {
 					results+= '<a class="list-group-item list-group-item-action" href="/company/'+response[i].symbol+'"><span class="company_name">'+response[i].symbol +' | ' + response[i].securityName+'</span>' + ' (' +response[i].exchange+')</a>';
 				}
 
-				$('.results').append(results).show();				
+				$('.search_results').append(results).show();				
 			}
 		})
+	},
+
+	hide_searchresults(){
+		$('.search_results').empty().hide();
 	},
 
 	range_bar(that){
@@ -75,7 +81,7 @@ $(document).ready(function(){
 		$('[data-toggle="tooltip"]').on('click', function(e){
 			e.preventDefault();
 		});
-		
+
 		$('[data-toggle="tooltip"]').tooltip({
 			delay:250,
 		});

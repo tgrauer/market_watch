@@ -26,16 +26,15 @@ class CompanyController extends Controller
     {
 
         $company_profile = $this->api->sendRequest('stock/'.$ticker.'/batch', 'types=company,quote,news,logo,chart&range=5d&last=10');
-        $analyst_ratings = $this->analyst_ratings($ticker);
         $advanced_stats = $this->advanced_stats($ticker);
 
         $company_profile['quote']['marketCap'] = $this->abbreviate_number($company_profile['quote']['marketCap']);
-        $company_profile['quote']['volume'] = $this->check_volume($company_profile['quote']['isUSMarketOpen'] !==null ? $company_profile['quote']['isUSMarketOpen'] : false, $company_profile['quote']['latestVolume'], $company_profile['quote']['previousVolume']);
+        $company_profile['quote']['volume'] = $this->check_volume(isset($company_profile['quote']['isUSMarketOpen']) && $company_profile['quote']['isUSMarketOpen'] !==null ? $company_profile['quote']['isUSMarketOpen'] : false, $company_profile['quote']['latestVolume'], $company_profile['quote']['previousVolume']);
 
-///////////////////////////////////////////////////////////////
-        // random error Undefined index: currentDebt
-        $advanced_stats['currentDebt'] = $this->abbreviate_number($advanced_stats['currentDebt']);
-//////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        // is there a better way to check if each of these exists
+        //////////////////////////////////////////////////////////////
+        isset($advanced_stats['currentDebt']) ? $advanced_stats['currentDebt'] = $this->abbreviate_number($advanced_stats['currentDebt']): '';
         $advanced_stats['revenue'] = $this->abbreviate_number($advanced_stats['revenue']);
         $advanced_stats['grossProfit'] = $this->abbreviate_number($advanced_stats['grossProfit']);
         $advanced_stats['totalRevenue'] = $this->abbreviate_number($advanced_stats['totalRevenue']);
@@ -54,25 +53,28 @@ class CompanyController extends Controller
         $data=[
             'company_profile'   => $company_profile,
             'advanced_stats'    => $advanced_stats,
-            'analyst_ratings'   => $analyst_ratings,
             'page'              => 'company_profile',
         ];
 
-    	// return view('company.company')->with($data);
-        return view('company.company')->with($data); /// why doesnt this work
+        return view('company.company')->with($data);
     }
 
 
-    public function getCompanyDividends($ticker, $range){
+    public function getCompanyDividends($ticker='redirect', $range){
 
-        $company_dividends = $this->api->sendRequest('stock/'.$ticker.'/dividends/'.$range);        
-        // $company_dividends = $this->api->sendRequest('time-series/advanced_dividends/AAPL', 'last=4');
-        $data=[
-            'company_dividends' => $company_dividends,
-            'page'  => 'company_dividends'
-        ];
+        if($ticker != 'redirect'){
+            $company_dividends = $this->api->sendRequest('stock/'.$ticker.'/dividends/'.$range);        
+            // $company_dividends = $this->api->sendRequest('time-series/advanced_dividends/AAPL', 'last=4');
+            $data=[
+                'company_dividends' => $company_dividends,
+                'page'  => 'company_dividends'
+            ];
 
-        return view('company.dividends')->with($data);
+            return view('company.dividends')->with($data);
+        }
+
+        return view('home');
+        
     }
 
     public function getCompanyFinancials($ticker)
@@ -99,9 +101,16 @@ class CompanyController extends Controller
         return view('company.insidertrades')->with($data);
     }
 
-    public function analyst_ratings($ticker)
+    public function analystRatings($ticker)
     {
-        return $this->api->sendRequest('/stock/'.$ticker.'/recommendation-trends');
+        $analyst_ratings = $this->api->sendRequest('stock/'.$ticker.'/recommendation-trends');
+
+        $data=[
+            'analyst_ratings' => $analyst_ratings,
+            'page' => 'analyst_ratings'
+        ];
+
+        return view('company.analystratings')->with($data);
     }
 
     public function advanced_stats($ticker)

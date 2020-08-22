@@ -10951,10 +10951,6 @@ body {
   margin-top: 35px !important;
 }
 
-.mt50 {
-  margin-top: 50px !important;
-}
-
 .mb0 {
   margin-bottom: 0 !important;
 }
@@ -10996,6 +10992,7 @@ body {
 }
 
 nav.navbar {
+  max-height: 55px;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#34a1d3+0,1d64af+100 */
   background: #34a1d3;
   /* Old browsers */
@@ -11095,6 +11092,11 @@ nav.navbar ::-ms-input-placeholder {
   color: #eee;
 }
 
+.search_results {
+  position: relative;
+  z-index: 999;
+}
+
 .jumbotron {
   background: url(/assets/img/market.jpg);
   width: 100%;
@@ -11116,7 +11118,7 @@ nav.navbar ::-ms-input-placeholder {
   color: #eee;
 }
 
-.jumbotron .results {
+.jumbotron .search_results {
   background: #232323;
   border: 1px solid #222;
   width: 300px;
@@ -11125,7 +11127,7 @@ nav.navbar ::-ms-input-placeholder {
   bottom: 1px;
 }
 
-.jumbotron .results .list-group-item {
+.jumbotron .search_results .list-group-item {
   background: #000;
   border: 1px solid #222;
   color: #ccc;
@@ -11133,7 +11135,7 @@ nav.navbar ::-ms-input-placeholder {
   border-right: none;
 }
 
-.jumbotron .results .list-group-item:hover {
+.jumbotron .search_results .list-group-item:hover {
   background: #0d0d0d;
   color: #0f478A;
 }

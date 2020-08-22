@@ -12,14 +12,6 @@
             <div class="col-sm-8 mt50">
                 <h1 class="display-4">Fluid jumbotron</h1>
                 <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-
-                <form action="#" class="form search_form">
-                    <div class="form-group mb0">
-                        <input type="text" class="form-control search" name="search" placeholder="Search ticker or company name">
-                    </div>
-
-                    <div class="results hidetilloaded"></div>
-                </form>
             </div>
             
             <div class="col-sm-4">
@@ -106,7 +98,7 @@
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
 
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'] *100)</span>
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
                                     </a> 
                                 @endif
                             @endforeach
@@ -115,7 +107,7 @@
                                 @if($loop->index < 7)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
 
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_down' : 'current_price_up'}}">@money($ern['quote']['latestPrice'] *100)</span>
+                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
                                     </a> 
                                 @endif
                             @endforeach 

@@ -20,11 +20,11 @@
 
         <div class="row">
                 
-            <div class="col-sm-5 mt50">
+            <div class="col-sm-5 mt-5">
                 @include('company.shared.company_overview')
             </div>
 
-            <div class="col-sm-7 mt50">
+            <div class="col-sm-7 mt-5">
                 <div class="row p0">
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
@@ -235,13 +235,12 @@
                                                 </div>
                                             </ul>
                                         </div>
-
                                     </div>
                                 </div>
                                 
                                 <div class="col-sm-4">
                                     <div class="company_details card">
-                                        <h4 class="px-2 pt-2">{{$company_profile['company']['companyName']}}</h4>
+                                        <h4 class="px-2 pt-2">Company Profile</h4>
                                         <p class="p-2">{{$company_profile['company']['description']}}</p>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">Industry <span class="float-right text-right">{{$company_profile['company']['industry']}}</span></li>

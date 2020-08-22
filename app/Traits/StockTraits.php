@@ -10,22 +10,23 @@ trait StockTraits {
 		if(empty($number)){
 			return '';
 		}
-	    if ($number > 999 && $number < 1000000){
+
+	    if ($number > 999 && $number < 1000000 || $number < -999 && $number > -1000000){
 	        $number_prefix = round($number/1000, 2);
 	        $number_suffix = "K";
 	    }
 
-	    if ($number > 999999 && $number < 1000000000){
+	    if ($number > 999999 && $number < 1000000000 || $number < -999999 && $number > -1000000000){
 	        $number_prefix = round($number/1000000, 2);
 	        $number_suffix = "M";
 	    }
 
-	    if ($number > 999999999 && $number < 1000000000000){
+	    if ($number > 999999999 && $number < 1000000000000 || $number < -999999999 && $number > -1000000000000){
 	        $number_prefix = round($number/1000000000, 2);
 	        $number_suffix = "B";
 	    }
 
-	    if ($number > 999999999999){
+	    if ($number > 999999999999 || $number < -999999999999){
 	        $number_prefix = round($number/1000000000000, 2);
 	        $number_suffix = "T";
 	    }

@@ -20,7 +20,7 @@
         
         <div class="row">
 
-            <div class="col-sm-12 mt50">
+            <div class="col-sm-12 mt-5">
                 @include('company.shared.company_overview')
             </div>
 

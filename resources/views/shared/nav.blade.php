@@ -11,8 +11,9 @@
             <span class="input-group-prepend">
                 <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
             </span>
-            <input class="form-control py-2" type="search" placeholder="Search">
+            <input class="form-control py-2 search" type="search" placeholder="Search">
         </div>
+        <div class="search_results hidetilloaded mx-4"></div>
     </form>
 
     <div class="navbar-collapse collapse justify-content-end">
