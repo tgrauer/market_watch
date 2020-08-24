@@ -22,6 +22,7 @@ Route::prefix('company')->group(function(){
 	Route::get('/stock/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
 	Route::get('/stock/{symbol}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
 	Route::get('/stock/{symbol}/analyst_ratings', 'CompanyController@analystRatings');
+	Route::get('/{symbol}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
 });
 
 

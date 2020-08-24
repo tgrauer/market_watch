@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Market Watch') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -30,5 +30,14 @@
             @yield('content')
         </main>
     </div>
+    
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js" type="text/javascript"></script>
+    
+    @if(isset($js_file))
+        <script src="/js/{{$js_file}}"></script>
+    @endif
+
+
 </body>
 </html>

@@ -40,8 +40,8 @@
                                                 <th>Price</th>
                                                 <th>Shares</th>
                                                 <th>Value</th>
-                                                <th>directIndirect</th>
-                                                <th>tranCode</th>
+                                                <th>Direct / Indirect</th>
+                                                <th>Transaction Code</th>
                                             </tr>
                                         </thead>
 

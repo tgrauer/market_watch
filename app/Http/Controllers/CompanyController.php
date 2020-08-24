@@ -104,13 +104,17 @@ class CompanyController extends Controller
     public function analystRatings($ticker)
     {
         $analyst_ratings = $this->api->sendRequest('stock/'.$ticker.'/recommendation-trends');
-
         $data=[
             'analyst_ratings' => $analyst_ratings,
+            'js_file'   => 'analystratings.js',
             'page' => 'analyst_ratings'
         ];
 
         return view('company.analystratings')->with($data);
+    }
+
+    public function getAnalystRatings($ticker){
+        return $this->api->sendRequest('stock/'.$ticker.'/recommendation-trends');
     }
 
     public function advanced_stats($ticker)

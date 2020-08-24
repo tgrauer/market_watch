@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($analyst_ratings);?>
+{{-- <?php dd($analyst_ratings);?> --}}
 
 <div class="d-flex wrapper">
 
@@ -23,11 +23,27 @@
             <div class="col-sm-12 mt-5">
                 @include('company.shared.company_overview')
             </div>
+            
+            <div class="col-sm-3">
+                <canvas id="buy_consensus"></canvas>
+                <h3 class="text-center">Buy Consensus</h3>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="cb" style="min-height:340px;">
+                    <canvas id="current_analyst_ratings_chart" width="400" height="400"></canvas>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="cb" style="min-height:340px;">
+                    <canvas id="historic_analyst_ratings_chart" width="400" height="400"></canvas>
+                </div>
+            </div>
 
             <div class="col-sm-12">
                 
                 @if(!empty($analyst_ratings))
-
                     <div class="tab-content mt30" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-insidertrades" role="tabpanel" aria-labelledby="nav-insidertrades-tab">
                             @if(!empty($analyst_ratings))
