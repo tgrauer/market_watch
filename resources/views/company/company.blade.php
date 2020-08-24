@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($advanced_stats);?> --}}
+{{-- <?php dd($company_profile);?> --}}
 
 <div class="d-flex wrapper">
     
@@ -58,21 +58,24 @@
         </div>
 
         <div class="row mt-3">
-            <div class="col-sm-3 col-xs-12 mt-2 px-2 mr-2 range">
-                <div class="range_bar d-flex justify-content-start">
-                    <div class="text-muted text-uppercase float-left font-weight-bold low text-left mr-1"><small>@money($company_profile['quote']['low'] * 100)</small></div>
-                    
-                    <div class="progress progress-xs mt-3 mb-3 float-left">
-                        <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-current="{{$company_profile['quote']['close']}}"></div>
+
+            @if($company_profile['quote']['low'] !== null && $company_profile['quote']['high'] !== null)
+                <div class="col-sm-3 col-xs-12 mt-2 px-2 mr-2 range">
+                    <div class="range_bar d-flex justify-content-start">
+                        <div class="text-muted text-uppercase float-left font-weight-bold low text-left mr-1"><small>@money($company_profile['quote']['low'] * 100)</small></div>
+                        
+                        <div class="progress progress-xs mt-3 mb-3 float-left">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-current="{{$company_profile['quote']['close']}}"></div>
+                        </div>
+
+                        <div class="text-muted text-uppercase font-weight-bold float-left high text-right ml-1"><small>@money($company_profile['quote']['high'] * 100)</small></div>
                     </div>
 
-                    <div class="text-muted text-uppercase font-weight-bold float-left high text-right ml-1"><small>@money($company_profile['quote']['high'] * 100)</small></div>
+                    <div class="cb"><p class="text-center">Day Range</p></div>
                 </div>
+            @endif
 
-                <div class="cb"><p class="text-center">Day Range</p></div>
-            </div>
-
-            <div class="col-sm-3 col-xs-12 mt-2 px-2 ml-5 range">
+            <div class="col-sm-3 col-xs-12 mt-2 px-2 ml-{{empty($company_profile['quote']['low']) ? '2' : '5'}} range">
                 <div class="range_bar d-flex justify-content-start">
                     <div class="text-muted text-uppercase float-left font-weight-bold low text-left mr-1"><small>@money($company_profile['quote']['week52Low'] * 100)</small></div>
                     

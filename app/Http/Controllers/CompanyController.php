@@ -136,15 +136,17 @@ class CompanyController extends Controller
         $i=0;
 
         foreach ($analyst_ratings as $rating) {
-
             foreach ($rating as $key => $value) {
                     if($key=='consensusEndDate'){
                         if($value==null)
                         array_push($historic_dates, '');
                     }
+
                     for($j=0;$j<count($rating_types);$j++){
                         if($key == $rating_types[$j]){
-                            array_push($current_ratings, $value);
+                            if($i==0){
+                                array_push($current_ratings, $value);
+                            }
                             $ratings_total +=$value;
                             if($rating_types[$j] == 'ratingBuy' || $rating_types[$j] == 'ratingOverweight'){
                                 $buy_total+=$value;
@@ -155,13 +157,12 @@ class CompanyController extends Controller
                             if($rating_types[$j] == 'ratingHold'){array_push($hold, $value);}
                             if($rating_types[$j] == 'ratingUnderweight'){array_push($sell, $value);}
                             if($rating_types[$j] == 'ratingSell'){array_push($strong_sell, $value);}
-
                         }
                     }
 
                 if($key=='consensusEndDate'){array_push($historic_dates, $value);}
             }
-
+            $i++;
         }
 
         $historic_ratings['strong_buy'] = $strong_buy;
