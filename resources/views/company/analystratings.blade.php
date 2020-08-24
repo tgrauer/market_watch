@@ -4,6 +4,7 @@
 
 {{-- <?php dd($analyst_ratings);?> --}}
 
+
 <div class="d-flex wrapper">
 
     @include('company.shared.company_nav')
@@ -43,14 +44,14 @@
 
             <div class="col-sm-12">
                 
-                @if(!empty($analyst_ratings))
+                @if(!empty($analyst_ratings['analyst_ratings_table']))
                     <div class="tab-content mt30" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-insidertrades" role="tabpanel" aria-labelledby="nav-insidertrades-tab">
-                            @if(!empty($analyst_ratings))
+                            @if(!empty($analyst_ratings['analyst_ratings_table']))
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover table-bordered dividend_table">
                                         <tbody>
-                                            @foreach($analyst_ratings as $rating)
+                                            @foreach($analyst_ratings['analyst_ratings_table'] as $rating)
                                                 <tr>
                                                     @php
                                                         $date = $rating['consensusEndDate'] ? $rating['consensusEndDate'] : $rating['consensusStartDate'];

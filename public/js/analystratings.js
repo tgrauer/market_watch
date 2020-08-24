@@ -147,64 +147,23 @@ function get_analyst_ratings(ticker) {
       ticker: ticker
     },
     success: function success(response) {
+      console.log(response);
       build_charts(response);
     }
   });
 }
 
-get_analyst_ratings(ticker); // CALCULATE BUY PERCENTAGE
-
-function calc_buy_consensus(response) {
-  var ratings_total = 0,
-      buy_total = 0,
-      response_array = Object.entries(response);
-
-  for (var i = 0; i < response_array.length; i++) {
-    for (j = 0; j < rating_types.length; j++) {
-      if (response_array[j][0] == rating_types[i]) {
-        ratings_total += response_array[i][1];
-
-        if (rating_types[i] == 'ratingBuy' || rating_types[i] == 'ratingOverweight') {
-          buy_total += response_array[i][1];
-        }
-      }
-    }
-  }
-
-  return buy_total / ratings_total * 100;
-}
-
-function build_ratings_charts(response, type) {
-  var return_array = [];
-
-  if (type == 'current') {
-    var response_array = Object.entries(response[0]);
-
-    for (var i = 0; i < response_array.length; i++) {
-      for (j = 0; j < rating_types.length; j++) {
-        if (response_array[j][0] == rating_types[i]) {
-          return_array.push(response_array[j][1]);
-        }
-      }
-    }
-
-    return return_array;
-  } else {} // console.log(response_array);
-
-} // BUILD ALL CHARTS
-
+get_analyst_ratings(ticker); // BUILD ALL CHARTS
 
 function build_charts(response) {
   // BUY CONSENSUS CHART
-  var calc_buy_rating = Math.ceil(calc_buy_consensus(response[0]));
-  console.log(calc_buy_rating);
   var ctx = document.getElementById("buy_consensus");
   var buy_consensus = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: [],
       datasets: [{
-        data: [calc_buy_rating, 100 - calc_buy_rating],
+        data: [response.buy_consensus, 100 - response.buy_consensus],
         backgroundColor: ['#42A458', '#ccc'],
         borderColor: ['#ccc'],
         borderWidth: 1
@@ -223,7 +182,7 @@ function build_charts(response) {
       },
       elements: {
         center: {
-          text: calc_buy_rating + '%',
+          text: response.buy_consensus + '%',
           color: '#000',
           fontStyle: 'Arial',
           sidePadding: 15
@@ -232,12 +191,10 @@ function build_charts(response) {
     }
   }); // CURRENT ANALYST RATINGS
 
-  var chart_type = 'current';
-  var current_ratings_array = build_ratings_charts(response, chart_type);
   var current_analyst_ratings_data = {
     labels: ['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'],
     datasets: [{
-      data: current_ratings_array,
+      data: response.current_ratings,
       backgroundColor: ['#3B954F', '#38c172', '#aaa', '#EB4B46', '#C72D29']
     }],
     elements: {
@@ -282,29 +239,36 @@ function build_charts(response) {
   //     window.current_analyst_ratings_chart.destroy();
   // }
 
+  console.log(response.historic_ratings.strong_buy);
   window.current_analyst_ratings_chart = new Chart(ctx, {
     type: 'horizontalBar',
     data: current_analyst_ratings_data,
     options: current_analyst_ratings_options
-  });
-  var chart_type = 'historic';
-  build_ratings_charts(response, chart_type); // HISTORIC ANALYSTS RATINGS
+  }); // HISTORIC ANALYSTS RATINGS
 
   var historic_analyst_ratings_data = {
-    labels: ['3/5/2020', '6/3/2020', '10/4/2020'],
+    labels: response.historic_dates,
     // /['#3B954F', '#38c172', '#aaa', '#EB4B46', '#C72D29']
     datasets: [{
-      label: 'Buy',
+      label: 'Strong Buy',
       backgroundColor: '#3B954F',
-      data: [10, 5, 3]
+      data: response.historic_ratings.strong_buy
+    }, {
+      label: 'Buy',
+      backgroundColor: '#38c172',
+      data: response.historic_ratings.buy
     }, {
       label: 'Hold',
       backgroundColor: '#aaa',
-      data: [2, 4, 7]
+      data: response.historic_ratings.hold
     }, {
       label: 'Sell',
       backgroundColor: '#EB4B46',
-      data: [3, 8, 5]
+      data: response.historic_ratings.sell
+    }, {
+      label: 'Strong Sell',
+      backgroundColor: '#C72D29',
+      data: response.historic_ratings.strong_sell
     }]
   };
   var historic_analyst_ratings_options = {
