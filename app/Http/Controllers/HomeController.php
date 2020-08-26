@@ -87,7 +87,7 @@ class HomeController extends Controller
 
     public function upcoming_ipos()
     {
-        return $this->api->sendRequest('/stock/market/today-ipos');
+        return $this->api->sendRequest('/stock/market/upcoming-ipos');
         ///stock/market/upcoming-ipos
     }
 }

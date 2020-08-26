@@ -19,9 +19,9 @@ Route::post('/search/{search_term}', 'HomeController@search');
 Route::prefix('company')->group(function(){
 	Route::get('/{ticker}', 'CompanyController@index');
 	Route::get('/{ticker}/dividends/{range}', 'CompanyController@getCompanyDividends');
-	Route::get('/stock/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
-	Route::get('/stock/{symbol}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
-	Route::get('/stock/{symbol}/analyst_ratings', 'CompanyController@analystRatings');
+	Route::get('/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
+	Route::get('/{symbol}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
+	Route::get('/{symbol}/analyst_ratings', 'CompanyController@analystRatings');
 	Route::get('/{symbol}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
 });
 

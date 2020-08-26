@@ -28,28 +28,28 @@
                 <div class="row p0">
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
-                            <p class="text-left pt-1 mb-1">${{$company_profile['quote']['marketCap']}}</p>
+                            <p class="text-left pt-1 mb-1">{{ $company_profile['quote']['marketCap'] ? '$'.$company_profile['quote']['marketCap'] : 'N/A'}}</p>
                             <h4 class="mb-2 text-left">Market Cap</h4>
                         </div>
                     </div>
 
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
-                            <p class="text-left pt-1 mb-1">{{$company_profile['quote']['peRatio']}}</p>
+                            <p class="text-left pt-1 mb-1">{{$company_profile['quote']['peRatio'] ?? 'N/A'}}</p>
                             <h4 class="mb-2 text-left">P/E Ratio</h4>
                         </div>
                     </div>
 
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
-                            <p class="text-left pt-1 mb-1">{{number_format($company_profile['quote']['volume'])}}</p>
+                            <p class="text-left pt-1 mb-1">{{$company_profile['quote']['volume'] ? number_format($company_profile['quote']['volume']) : 'N/A'}}</p>
                             <h4 class="mb-2 text-left">Volume</h4>
                         </div>
                     </div>
 
                     <div class="company_stock_highlights col-sm-3">
                         <div class="inner py-3 px-3">
-                            <p class="text-left pt-1 mb-1">{{number_format($company_profile['quote']['avgTotalVolume'])}}</p>
+                            <p class="text-left pt-1 mb-1">{{$company_profile['quote']['avgTotalVolume'] ? number_format($company_profile['quote']['avgTotalVolume']) : 'N/A'}}</p>
                             <h4 class="mb-2 text-left">Average Volume</h4>
                         </div>
                     </div>

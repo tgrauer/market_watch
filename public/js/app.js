@@ -37282,7 +37282,7 @@ var Market_Watch = {
     $('.range_bar').each(function () {
       Market_Watch.range_bar(this);
     });
-    $('body').on('click', this.hide_searchresults);
+    $(document).on('click', this.hide_searchresults);
   },
   event_handlers: function event_handlers() {
     $('.search').on('keyup', this.search);
@@ -37290,35 +37290,49 @@ var Market_Watch = {
   search: function search(e) {
     e.preventDefault();
     var search_term = $(this).val();
-    $('.results_cnt').empty();
+
+    if (!search_term.length) {
+      $('.search_results').empty().hide();
+      search_term = '';
+    }
+
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
       }
     });
     var token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-      url: '/search/' + search_term,
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        _token: token,
-        search_term: search_term
-      },
-      success: function success(response) {
-        console.log(response);
-        var results = '';
 
-        for (var i = 0; i < response.length; i++) {
-          results += '<a class="list-group-item list-group-item-action" href="/company/' + response[i].symbol + '"><span class="company_name">' + response[i].symbol + ' | ' + response[i].securityName + '</span>' + ' (' + response[i].exchange + ')</a>';
+    if (search_term.length) {
+      $.ajax({
+        url: '/search/' + search_term,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          _token: token,
+          search_term: search_term
+        },
+        success: function success(response) {
+          console.log(response);
+          var results = '';
+
+          for (var i = 0; i < response.length; i++) {
+            results += '<a class="list-group-item list-group-item-action" href="/company/' + response[i].symbol + '"><span class="company_name">' + response[i].symbol + ' | ' + response[i].securityName + '</span>' + ' (' + response[i].exchange + ')</a>';
+          }
+
+          $('.search_results').append(results).show();
         }
-
-        $('.search_results').append(results).show();
-      }
-    });
+      });
+    }
   },
-  hide_searchresults: function hide_searchresults() {
-    $('.search_results').empty().hide();
+  hide_searchresults: function hide_searchresults(e) {
+    if ($(e.target).hasClass('search') || $(e.target).hasClass('search_results')) {
+      console.log('should not close');
+      e.stopPropagation();
+    } else {
+      console.log('should  close');
+      $('.search_results').empty().hide();
+    }
   },
   range_bar: function range_bar(that) {
     var low = $(that).find('.low small').text();

@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($most_active);?> --}}
+{{-- <?php dd($upcoming_ipos);?> --}}
 {{-- <?php dd($todays_earnings['bto']);?> --}}
 
 <div class="jumbotron jumbotron-fluid">
