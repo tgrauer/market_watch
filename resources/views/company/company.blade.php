@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($company_profile);?> --}}
+<?php dd($company_profile);?>
 
 <div class="d-flex wrapper">
     
@@ -99,7 +99,12 @@
 
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <div class="row key_data">
+
+                                    <div class="stock_chart">
+                                        <canvas id="stock_chart" width="400" max-height="200"></canvas>    
+                                    </div>
+
+                                    <div class="row key_data mt-5">
                                         <div class="col-sm-12"><h2 class="section_heading mb-4">Key Data</h2></div>
                                         
                                         <div class="col-sm-6 mb-4">

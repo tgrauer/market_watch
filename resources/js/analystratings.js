@@ -62,7 +62,6 @@ function get_analyst_ratings(ticker){
             ticker:ticker
         },
         success:function(response){
-            console.log(response);
             build_charts(response);        
         }
     });

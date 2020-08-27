@@ -51,6 +51,7 @@ class CompanyController extends Controller
         //gmdate("n-j-Y", 1596809885514)
 
         $data=[
+            'js_file'   => 'company.js',
             'company_profile'   => $company_profile,
             'advanced_stats'    => $advanced_stats,
             'page'              => 'company_profile',
@@ -189,6 +190,20 @@ class CompanyController extends Controller
         return $this->api->sendRequest('/stock/'.$ticker.'/advanced-stats');
     }
 }
+
+// max All available data up to 15 years   Historically adjusted market-wide data
+// 5y  Five years  Historically adjusted market-wide data
+// 2y  Two years   Historically adjusted market-wide data
+// 1y  One year    Historically adjusted market-wide data
+// ytd Year-to-date    Historically adjusted market-wide data
+// 6m  Six months  Historically adjusted market-wide data
+// 3m  Three months    Historically adjusted market-wide data
+// 1m  One month (default) Historically adjusted market-wide data
+// 1mm One month   Historically adjusted market-wide data in 30 minute intervals
+// 5d  Five Days   Historically adjusted market-wide data by day.
+// 5dm Five Days   Historically adjusted market-wide data in 10 minute intervals
+// date    Specific date   If used with the query parameter chartByDay, then this returns historical OHLCV data for that date. Otherwise, it returns data by minute for a specified date, if available. Date format YYYYMMDD. Currently supporting trailing 30 calendar days of minute bar data.
+// dynamic One day Will return 1d or 1m data depending on the day or week and time of day. Intraday per minute data is only returned during market hours.
 
 // USE MARKET to query multiple companies
 ///stock/market/batch?symbols=aapl,fb,tsla&types=quote,news,chart&range=1m&last=5
