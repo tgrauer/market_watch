@@ -37327,10 +37327,8 @@ var Market_Watch = {
   },
   hide_searchresults: function hide_searchresults(e) {
     if ($(e.target).hasClass('search') || $(e.target).hasClass('search_results')) {
-      console.log('should not close');
       e.stopPropagation();
     } else {
-      console.log('should  close');
       $('.search_results').empty().hide();
     }
   },

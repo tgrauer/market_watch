@@ -8,7 +8,6 @@
 @import "~compass-sass-mixins/lib/compass";
 
 
-
 body{
 	font-size: 14px;
 	font-weight: 400;
@@ -366,6 +365,12 @@ span.change_percent{font-weight: 600;}
 
 .dividend_table{
 	th{background: $secondary;color:#fff;}
+}
+
+#chartdiv {
+	width: 100%;
+	height: 500px;
+	max-width: 100%;
 }
 
 //////////////////////////////////////////////////////////////////////

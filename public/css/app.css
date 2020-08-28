@@ -11376,6 +11376,12 @@ span.change_percent {
   color: #fff;
 }
 
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;

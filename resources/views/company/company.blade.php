@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($company_profile);?>
+{{-- <?php dd($company_profile);?> --}}
 
 <div class="d-flex wrapper">
     
@@ -101,7 +101,40 @@
                                 <div class="col-sm-8">
 
                                     <div class="stock_chart">
-                                        <canvas id="stock_chart" width="400" max-height="200"></canvas>    
+                                        <div class="d-flex justify-content-between" id="controls" >
+                                            <form action="#" class="form-inline">
+                                                <div class="form-group float-left">
+                                                    <label>From</label>
+                                                    <div class="input-group ml-1">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                        <input type="text" id="fromfield" class="form-control amcharts-input" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group float-left ml-2">
+                                                    <label>To</label>
+                                                    <div class="input-group ml-1">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                        <input type="text" id="tofield" class="form-control amcharts-input" />
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <div class=" mr-2">
+                                                <button class="btn btn-sm btn-primary" id="b1m" class="amcharts-input">1m</button>
+                                                <button class="btn btn-sm btn-primary" id="b3m" class="amcharts-input">3m</button>
+                                                <button class="btn btn-sm btn-primary" id="b6m" class="amcharts-input">6m</button>
+                                                <button class="btn btn-sm btn-primary" id="b1y" class="amcharts-input">1y</button>
+                                                <button class="btn btn-sm btn-primary" id="bytd" class="amcharts-input">YTD</button>
+                                                <button class="btn btn-sm btn-primary" id="bmax" class="amcharts-input">MAX</button>
+                                            </div>
+                                        </div>
+                                        <div id="chartdiv"></div>
+                                        {{-- <canvas id="stock_chart" width="400" max-height="200"></canvas>     --}}
                                     </div>
 
                                     <div class="row key_data mt-5">

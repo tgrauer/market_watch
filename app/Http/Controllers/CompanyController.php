@@ -51,6 +51,7 @@ class CompanyController extends Controller
         //gmdate("n-j-Y", 1596809885514)
 
         $data=[
+            'has_chart' => true,
             'js_file'   => 'company.js',
             'company_profile'   => $company_profile,
             'advanced_stats'    => $advanced_stats,
