@@ -20,9 +20,10 @@ Route::prefix('company')->group(function(){
 	Route::get('/{ticker}', 'CompanyController@index');
 	Route::get('/{ticker}/dividends/{range}', 'CompanyController@getCompanyDividends');
 	Route::get('/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
-	Route::get('/{symbol}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
-	Route::get('/{symbol}/analyst_ratings', 'CompanyController@analystRatings');
-	Route::get('/{symbol}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
+	Route::get('/{ticker}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
+	Route::get('/{ticker}/analyst_ratings', 'CompanyController@analystRatings');
+	Route::get('/{ticker}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
+	Route::get('/{ticker}/chart/{range}', 'CompanyController@build_stock_chart');
 });
 
 

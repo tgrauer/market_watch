@@ -2,9 +2,5 @@
     "/js/analystratings.js": "/js/analystratings.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/company.js": "/js/company.js",
-    "/vendors~canvg.js": "/vendors~canvg.js",
-    "/vendors~pdfmake.js": "/vendors~pdfmake.js",
-    "/vendors~xlsx.js": "/vendors~xlsx.js",
-    "/xlsx.js": "/xlsx.js"
+    "/js/company.js": "/js/company.js"
 }

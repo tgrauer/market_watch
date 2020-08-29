@@ -99,7 +99,6 @@
 
                             <div class="row">
                                 <div class="col-sm-8">
-
                                     <div class="stock_chart">
                                         <div class="d-flex justify-content-between" id="controls" >
                                             <form action="#" class="form-inline">
@@ -125,12 +124,12 @@
                                             </form>
 
                                             <div class=" mr-2">
-                                                <button class="btn btn-sm btn-primary" id="b1m" class="amcharts-input">1m</button>
-                                                <button class="btn btn-sm btn-primary" id="b3m" class="amcharts-input">3m</button>
-                                                <button class="btn btn-sm btn-primary" id="b6m" class="amcharts-input">6m</button>
-                                                <button class="btn btn-sm btn-primary" id="b1y" class="amcharts-input">1y</button>
-                                                <button class="btn btn-sm btn-primary" id="bytd" class="amcharts-input">YTD</button>
-                                                <button class="btn btn-sm btn-primary" id="bmax" class="amcharts-input">MAX</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="1m" class="amcharts-input">1m</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="3m" class="amcharts-input">3m</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="6m" class="amcharts-input">6m</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="1y" class="amcharts-input">1y</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="ytd" class="amcharts-input">YTD</button>
+                                                <button class="btn btn-sm btn-primary stockchart_date_btn" id="max" class="amcharts-input">MAX</button>
                                             </div>
                                         </div>
                                         <div id="chartdiv"></div>

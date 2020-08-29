@@ -11382,6 +11382,15 @@ span.change_percent {
   max-width: 100%;
 }
 
+.stock_chart {
+  background: #fff;
+  padding: 20px 10px;
+}
+
+.stock_chart input.form-control {
+  background: #eee;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;

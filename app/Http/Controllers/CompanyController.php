@@ -25,7 +25,8 @@ class CompanyController extends Controller
     public function index($ticker)
     {
 
-        $company_profile = $this->api->sendRequest('stock/'.$ticker.'/batch', 'types=company,quote,news,logo,chart&range=5d&last=10');
+        // $company_profile = $this->api->sendRequest('stock/'.$ticker.'/batch', 'types=company,quote,news,logo,chart&range=5d&last=10');
+        $company_profile = $this->api->sendRequest('stock/'.$ticker.'/batch', 'types=company,quote,news,logo');
         $advanced_stats = $this->advanced_stats($ticker);
 
         $company_profile['quote']['marketCap'] = $this->abbreviate_number($company_profile['quote']['marketCap']);
@@ -61,6 +62,16 @@ class CompanyController extends Controller
         return view('company.company')->with($data);
     }
 
+    public function build_stock_chart($ticker, $range='')
+    {
+        return $this->api->sendRequest('stock/'.$ticker.'/chart/'.$range);
+    }
+
+    public function update_stock_chart(Request $request){
+        $ticker = $request->ticker;
+        $range = $request->range;
+        return $this->build_stock_chart($ticker, $range);
+    }
 
     public function getCompanyDividends($ticker='redirect', $range){
 
