@@ -108,7 +108,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
                                                         </div>
-                                                        <input type="text" id="fromfield" class="form-control amcharts-input" />
+                                                        <input type="text" id="fromfield" class="form-control amcharts-input datepicker" />
                                                     </div>
                                                 </div>
 
@@ -118,7 +118,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
                                                         </div>
-                                                        <input type="text" id="tofield" class="form-control amcharts-input" />
+                                                        <input type="text" id="tofield" class="form-control amcharts-input datepicker" />
                                                     </div>
                                                 </div>
                                             </form>

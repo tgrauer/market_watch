@@ -81,7 +81,9 @@ var Market_Watch = {
 }
 
 $(document).ready(function(){
+
 	Market_Watch.init();
+
 	$("#menu-toggle").click(function(e) {
 	    e.preventDefault();
 	    $(".wrapper").toggleClass("toggled");
@@ -96,4 +98,5 @@ $(document).ready(function(){
 			delay:250,
 		});
 	});
+
 });

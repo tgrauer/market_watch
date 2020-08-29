@@ -349,6 +349,7 @@ var Company = {
 };
 $(document).ready(function () {
   Company.init();
+  $('.datepicker').datepicker();
 });
 
 /***/ }),

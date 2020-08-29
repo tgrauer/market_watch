@@ -53,6 +53,7 @@ class CompanyController extends Controller
 
         $data=[
             'has_chart' => true,
+            'css_file'=>'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css',
             'js_file'   => 'company.js',
             'company_profile'   => $company_profile,
             'advanced_stats'    => $advanced_stats,

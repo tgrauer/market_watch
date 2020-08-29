@@ -26,6 +26,7 @@
         "@amcharts/amcharts4": "^4.9.37",
         "@amcharts/amcharts4-fonts": "^4.0.1",
         "@amcharts/amcharts4-geodata": "^4.1.17",
+        "bootstrap-datepicker": "^1.9.0",
         "compass-sass-mixins": "^0.12.7",
         "install": "^0.13.0",
         "npm": "^6.14.8"
