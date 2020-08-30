@@ -91,6 +91,19 @@ class CompanyController extends Controller
         
     }
 
+    public function getEarnings($ticker)
+    {
+        $last = 4;
+        $company_earnings = $this->api->sendRequest('stock/'.$ticker.'/earnings/'.$last);
+
+        $data=[
+            'company_earnings' => $company_earnings,
+            'page'  => 'company_earnings'
+        ];
+
+        return view('company.earnings')->with($data);
+    }
+
     public function getCompanyFinancials($ticker)
     {
         $company_financials = $this->api->sendRequest('stock/'.$ticker.'/financials');
@@ -229,3 +242,4 @@ class CompanyController extends Controller
 // /stock/aapl/advanced-stats
 // //time-series/advanced_dividends/{symbol?}/{refid?}
 // /time-series/advanced_dividends/AAPL?last=4
+///stock/{symbol}/earnings/{last}/{field}

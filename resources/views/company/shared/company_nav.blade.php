@@ -6,7 +6,7 @@
         <a href="{{action('CompanyController@getCompanyFinancials', [Session::get('ticker') ?? request()->ticker])}}" class="list-group-item list-group-item-action {{$page == 'company_financials' ? 'active' : ''}}">Financials</a>
         <a href="{{action('CompanyController@getCompanyInsiderTrades', [Session::get('ticker') ?? request()->ticker])}}" class="list-group-item list-group-item-action {{$page == 'company_insider_trades' ? 'active' : ''}}">Insider Transactions</a>
         <a href="{{action('CompanyController@analystRatings', [Session::get('ticker') ?? request()->ticker])}}" class="list-group-item list-group-item-action {{$page == 'analyst_ratings' ? 'active' : ''}}">Analyst Ratings</a>
-        <a href="#" class="list-group-item list-group-item-action ">Status</a>
+        <a href="{{action('CompanyController@getEarnings', [Session::get('ticker') ?? request()->ticker])}}" class="list-group-item list-group-item-action {{$page == 'company_earnings' ? 'active' : ''}}">Earnings</a>
     </div>
 </div>
 <!-- /#sidebar-wrapper -->
