@@ -11,7 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.browserSync('market_watch.test');
+
 mix.sass('resources/sass/app.scss', 'public/css')
 mix.js('resources/js/app.js', 'public/js')
-mix.js('resources/js/analystratings.js', 'public/js/analystratings.js')
-mix.js('resources/js/company.js', 'public/js/company.js');
+	.js('resources/js/analystratings.js', 'public/js/analystratings.js')
+	.js('resources/js/company_dividends.js', 'public/js/company_dividends.js')
+	.js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps()
+	.js('resources/js/company.js', 'public/js/company.js');

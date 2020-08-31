@@ -27,22 +27,22 @@
 
         <div class="row mt-5">
 
-            <div class="col-sm-3">
+            <div class="col-sm-3 analyst_ratings_chart">
                 <h3 class="text-center">Buy Consensus</h3>
                 <canvas id="buy_consensus"></canvas>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-4 analyst_ratings_chart">
                 <h3 class="text-center">Current Analyst Rating</h3>
-                <div class="cb" style="min-height:340px;">
-                    <canvas id="current_analyst_ratings_chart" width="400" height="400"></canvas>
+                <div class="cb" style="min-height:300px;">
+                    <canvas id="current_analyst_ratings_chart" width="400" height=320"></canvas>
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-5 analyst_ratings_chart">
                 <h3 class="text-center">Analyst Ratings by Month</h3>
-                <div class="cb" style="min-height:340px;">
-                    <canvas id="historic_analyst_ratings_chart" width="400" height="400"></canvas>
+                <div class="cb" style="min-height:300px;">
+                    <canvas id="historic_analyst_ratings_chart" width="400" height="380"></canvas>
                 </div>
             </div>            
         </div>

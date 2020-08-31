@@ -48,7 +48,7 @@
                                         @foreach($company_earnings['earnings'] as $earnings)
                                             <tr>
                                                 <td>{{$earnings['fiscalPeriod']}}</td>
-                                                <td>{{$earnings['EPSReportDate']}}</td>
+                                                <td>{{Carbon\Carbon::parse($earnings['EPSReportDate'])->isoFormat('M-D-Y')}}</td>
                                                 <td>@money($earnings['EPSSurpriseDollar'] * 100)</td>
                                                 <td>{{$earnings['actualEPS']}}</td>
                                                 <td>{{$earnings['consensusEPS']}}</td>

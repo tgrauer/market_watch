@@ -7,7 +7,6 @@
 // Compass
 @import "~compass-sass-mixins/lib/compass";
 
-
 body{
 	font-size: 14px;
 	font-weight: 400;
@@ -216,16 +215,22 @@ span.change_percent{font-weight: 600;}
 .most_active{
 	height: 100%;
 	max-height: 415px;
+
 	.card-body{
 		overflow-y:scroll;
 	}
-	
 }
 
 .company_profile{
+
 	h2.comp_name{
 		font-weight: 600;
 		color:#444;
+	}
+
+	.analyst_ratings_chart h3{
+		font-size: 20px;
+		font-weight: 600;
 	}
 
 	.current_stock_price{
@@ -245,11 +250,9 @@ span.change_percent{font-weight: 600;}
 	.company_details {
 		.list-group-item{
 			padding: 0.5rem;
-		}
-		
+		}		
 	}
 }
-
 
 .company_stock_highlights{
 	
@@ -289,13 +292,12 @@ span.change_percent{font-weight: 600;}
 
 	.list-group-item{
 		font-weight: 600;
-		&.active{
+		&.active, &:hover{
 			background:darken(#F1F4FA, 2%);
 			color:$secondary;
 			border-color: #ddd;
+			@include box-shadow(0 0px 3px darken(#F1F4FA, 8%));
 		}
-
-		&:hover{color:$secondary;}
 	}
 }
 
@@ -380,16 +382,20 @@ span.change_percent{font-weight: 600;}
 	input.form-control{
 		background: #eee;
 	}
-
-	// .stockchart_date_btn{
-	// 	background: $blue;
-	// 	border:1px solid darken($blue, 8%);
-
-	// 	&:hover, &:active, &:focus{
-	// 		background: darken($blue, 8%);
-	// 	}
-	// }
 }
+
+table.dividend_table {
+	th{
+		position:sticky;
+        top: 0 ;
+	}
+}
+
+#buy_consensus{
+	position: relative;
+	bottom:20px;
+}
+
 
 //////////////////////////////////////////////////////////////////////
 ////	Media Queries ////

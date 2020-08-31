@@ -77,9 +77,12 @@ class CompanyController extends Controller
     public function getCompanyDividends($ticker='redirect', $range){
 
         if($ticker != 'redirect'){
+            $advanced_stats = $this->advanced_stats($ticker);
             $company_dividends = $this->api->sendRequest('stock/'.$ticker.'/dividends/'.$range);        
             // $company_dividends = $this->api->sendRequest('time-series/advanced_dividends/AAPL', 'last=4');
             $data=[
+                'js_file'   => 'company_dividends.js',
+                'advanced_stats'    => $advanced_stats,
                 'company_dividends' => $company_dividends,
                 'page'  => 'company_dividends'
             ];

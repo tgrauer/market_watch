@@ -13,7 +13,9 @@ var Company = {
 	},
 
 	build_stock_chart:function(data=[]){
+
 		if(typeof chart != 'undefined'){
+			console.log('chart is already built');
 			chart.dispose();
 		}
 		
@@ -286,6 +288,5 @@ $(document).ready(function(){
 
 	$('.datepicker').datepicker();
 });
-
 
 
