@@ -35,15 +35,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
-    @if(isset($has_chart))
-        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-        {{-- <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script> --}}
-    @endif
-    
-    @if(isset($js_file))
-        <script src="/js/{{$js_file}}"></script>
-    @endif
+@if(isset($has_chart))
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+@endif
+
+@if(isset($js_file))
+    <script src="/js/{{$js_file}}"></script>
+@endif
 
 </body>
 </html>
