@@ -165,52 +165,56 @@ class CompanyController extends Controller
         $return_array = array();
         $i=0;
 
-        foreach ($analyst_ratings as $rating) {
-            foreach ($rating as $key => $value) {
-                    if($key=='consensusEndDate'){
-                        if($value==null)
-                        array_push($historic_dates, '');
-                    }
-
-                    for($j=0;$j<count($rating_types);$j++){
-                        if($key == $rating_types[$j]){
-                            if($i==0){
-                                array_push($current_ratings, $value);
-                            }
-                            $ratings_total +=$value;
-                            if($rating_types[$j] == 'ratingBuy' || $rating_types[$j] == 'ratingOverweight'){
-                                $buy_total+=$value;
-                            }
-
-                            if($rating_types[$j] == 'ratingBuy'){array_push($strong_buy , $value);}
-                            if($rating_types[$j] == 'ratingOverweight'){array_push($buy, $value);}
-                            if($rating_types[$j] == 'ratingHold'){array_push($hold, $value);}
-                            if($rating_types[$j] == 'ratingUnderweight'){array_push($sell, $value);}
-                            if($rating_types[$j] == 'ratingSell'){array_push($strong_sell, $value);}
+        if(!empty($analyst_ratings)){
+            foreach ($analyst_ratings as $rating) {
+                foreach ($rating as $key => $value) {
+                        if($key=='consensusEndDate'){
+                            if($value==null)
+                            array_push($historic_dates, '');
                         }
-                    }
 
-                if($key=='consensusEndDate'){array_push($historic_dates, $value);}
+                        for($j=0;$j<count($rating_types);$j++){
+                            if($key == $rating_types[$j]){
+                                if($i==0){
+                                    array_push($current_ratings, $value);
+                                }
+                                $ratings_total +=$value;
+                                if($rating_types[$j] == 'ratingBuy' || $rating_types[$j] == 'ratingOverweight'){
+                                    $buy_total+=$value;
+                                }
+
+                                if($rating_types[$j] == 'ratingBuy'){array_push($strong_buy , $value);}
+                                if($rating_types[$j] == 'ratingOverweight'){array_push($buy, $value);}
+                                if($rating_types[$j] == 'ratingHold'){array_push($hold, $value);}
+                                if($rating_types[$j] == 'ratingUnderweight'){array_push($sell, $value);}
+                                if($rating_types[$j] == 'ratingSell'){array_push($strong_sell, $value);}
+                            }
+                        }
+
+                    if($key=='consensusEndDate'){array_push($historic_dates, $value);}
+                }
+                $i++;
             }
-            $i++;
+
+            $historic_ratings['strong_buy'] = $strong_buy;
+            $historic_ratings['buy'] = $buy;
+            $historic_ratings['hold'] = $hold;
+            $historic_ratings['sell'] = $sell;
+            $historic_ratings['strong_sell'] = $strong_sell;
+
+            array_push($buy_consensus, $ratings_total);
+            array_push($buy_consensus, $buy_total);
+
+            $return_array['analyst_ratings_table'] = $analyst_ratings;
+            $return_array['buy_consensus'] = round($buy_total / $ratings_total * 100);
+            $return_array['current_ratings'] = $current_ratings;
+            $return_array['historic_dates'] = $historic_dates;
+            $return_array['historic_ratings']  = $historic_ratings;
+
+            return $return_array;
         }
 
-        $historic_ratings['strong_buy'] = $strong_buy;
-        $historic_ratings['buy'] = $buy;
-        $historic_ratings['hold'] = $hold;
-        $historic_ratings['sell'] = $sell;
-        $historic_ratings['strong_sell'] = $strong_sell;
-
-        array_push($buy_consensus, $ratings_total);
-        array_push($buy_consensus, $buy_total);
-
-        $return_array['analyst_ratings_table'] = $analyst_ratings;
-        $return_array['buy_consensus'] = round($buy_total / $ratings_total * 100);
-        $return_array['current_ratings'] = $current_ratings;
-        $return_array['historic_dates'] = $historic_dates;
-        $return_array['historic_ratings']  = $historic_ratings;
-
-        return $return_array;
+        return ['message' => 'There are no analyst ratings available for this security'];
 
     }
 

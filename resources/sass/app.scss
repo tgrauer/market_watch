@@ -178,16 +178,25 @@ nav.navbar{
 .current_price_up, .positive{color:$green;}
 span.change_percent{font-weight: 600;}
 
+.sector_performance{
+	li{color:#eee;}
+	.list-group{
+		@include border-radius(0 0 0.25rem 0.25rem);
+	}
+	.positive_bg{background: $green;}
+	.negative_bg{background: tomato;}
+}
+
+.card-header{
+	h4{
+		font-size: 18px;
+		font-weight: 600;
+		color:#555;
+	}
+}
+
 .todays_earnings, .top_gainers, .top_losers, .most_active{
 	
-	.card-header{
-		h4{
-			font-size: 18px;
-			font-weight: 600;
-			color:#555;
-		}
-	}
-
 	.card-body{
 
 		.list-group-item{

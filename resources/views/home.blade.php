@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($upcoming_ipos);?> --}}
+{{-- <?php dd($sector_performance);?> --}}
 {{-- <?php dd($todays_earnings['bto']);?> --}}
 
 <div class="jumbotron jumbotron-fluid">
@@ -26,7 +26,7 @@
                                 @foreach($most_active as $stk)
                                     <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$stk['symbol']])}}"><span class="company_name">{{$stk['companyName']}}</span> - <span class="ticker">{{$stk['symbol']}}</span>
 
-                                    <span class="change_percent float-right {{$stk['changePercent']>0 ? 'positive' : 'negative'}}">{{$stk['changePercent']>0 ? '+' : '-'}}{{round($stk['changePercent'], 2)}}%</span>
+                                    <span class="change_percent float-right {{$stk['changePercent']>0 ? 'positive' : 'negative'}}">{{$stk['changePercent']>0 ? '+' : ''}}{{round($stk['changePercent'], 2)}}%</span>
                                     </a> 
                                 @endforeach
                             @endif                       
@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -78,47 +77,67 @@
         </div>
 
         <div class="col-sm-4">
-            <div class="todays_earnings card">
+            @if(!empty($todays_earnings['bto']) || !empty($todays_earnings['amc']))
+                <div class="todays_earnings card mb-3">
+                    <div class="card-header">
+                        <h4 class="mb0">Today's Earnings</h4>
+                    </div>
+
+                    <div class="card-body p0">
+                        <ul class="list-group">       
+
+                            @php
+                                if(!empty($todays_earnings)){
+                                    $bto_earnings = $todays_earnings['bto'];
+                                    $amc_earnings = $todays_earnings['amc'];
+                                }
+                            @endphp
+                            
+                            @if(!empty($todays_earnings))
+                                @foreach($bto_earnings as $ern)
+                                    @if($loop->index < 7)
+                                        <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
+
+                                        <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
+                                        </a> 
+                                    @endif
+                                @endforeach
+
+                                @foreach($amc_earnings as $ern)
+                                    @if($loop->index < 7)
+                                        <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
+
+                                        <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
+                                        </a> 
+                                    @endif
+                                @endforeach 
+                            @endif                       
+                        </ul>
+                        
+                        @if(!empty($todays_earnings)) 
+                            <div class="d-flex justify-content-center">
+                                <a href="" class="btn btn-md mt20 mb20 sec_btn">View All Earnings</a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @endif
+
+            <div class="sector_performance card">
                 <div class="card-header">
-                    <h4 class="mb0">Today's Earnings</h4>
+                    <h4 class="mb0">Sector Performance</h4>
                 </div>
 
                 <div class="card-body p0">
                     <ul class="list-group">       
-
-                        @php
-                            if(!empty($todays_earnings)){
-                                $bto_earnings = $todays_earnings['bto'];
-                                $amc_earnings = $todays_earnings['amc'];
-                            }
-                        @endphp
                         
-                        @if(!empty($todays_earnings))
-                            @foreach($bto_earnings as $ern)
-                                @if($loop->index < 7)
-                                    <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span>
-
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
-                                    </a> 
-                                @endif
+                        @if(!empty($sector_performance))
+                            @foreach($sector_performance as $sector)
+                                <li class="list-group-item {{$sector['performance'] * 100 > 0 ? 'positive_bg' : 'negative_bg'}}">{{$sector['name']}} <span class="float-right text-right">{{$sector['performance'] * 100}}</span></li>
                             @endforeach
 
-                            @foreach($amc_earnings as $ern)
-                                @if($loop->index < 7)
-                                    <a class="list-group-item list-group-item-action" href="{{action('CompanyController@index', [$ern['symbol']])}}"><span class="company_name">{{$ern['quote']['companyName']}}</span> - <span class="ticker">{{$ern['symbol']}}</span> <span class="price float-right">
-
-                                    <span class="price float-right {{$ern['quote']['previousClose'] < $ern['quote']['latestPrice'] ? 'current_price_up' : 'current_price_down'}}">@money($ern['quote']['latestPrice'] *100)</span>
-                                    </a> 
-                                @endif
-                            @endforeach 
                         @endif                       
-                    </ul>
-                    
-                    @if(!empty($todays_earnings)) 
-                        <div class="d-flex justify-content-center">
-                            <a href="" class="btn btn-md mt20 mb20 sec_btn">View All Earnings</a>
-                        </div>
-                    @endif
+                    </ul>                    
                 </div>
             </div>
         </div>

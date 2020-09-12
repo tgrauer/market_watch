@@ -13,18 +13,19 @@ var Company = {
 	},
 
 	build_stock_chart:function(data=[]){
-
-		if(typeof chart != 'undefined'){
-			console.log('chart is already built');
-			chart.dispose();
-		}
 		
+		var chart;
+
 		am4core.ready(function() {
 
 			am4core.useTheme(am4themes_animated);
-			
+
+			if(typeof chart !== "undefined"){
+				console.log('Im defined');
+				chart.dispose();
+			}
 			// Create chart
-			var chart = am4core.create("chartdiv", am4charts.XYChart);
+			chart = am4core.create("chartdiv", am4charts.XYChart);
 			chart.padding(0, 15, 0, 15);
 			chart.data = data;
 

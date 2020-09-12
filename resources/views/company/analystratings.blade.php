@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($analyst_ratings);?> --}}
+<?php dd($analyst_ratings);?>
 
 <div class="d-flex wrapper">
 

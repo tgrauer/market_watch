@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 @else
-                    <div class="alert alert-warning col-lg-6 col-sm-12" role="alert">
+                    <div class="alert alert-warning col-lg-6 col-sm-12 mt-5" role="alert">
                         Company earnings are not available or have not yet been reported.
                     </div>
                 @endif

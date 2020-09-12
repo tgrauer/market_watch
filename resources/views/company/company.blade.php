@@ -285,6 +285,7 @@
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">Industry <span class="float-right text-right">{{$company_profile['company']['industry']}}</span></li>
                                             <li class="list-group-item">Sector <span class="float-right text-right">{{$company_profile['company']['sector']}}</span></li>
+                                            <li class="list-group-item">Type <span class="float-right text-right">{{$company_profile['company']['issueType']}}</span></li>
                                             <li class="list-group-item">Website <span class="float-right text-right">{{$company_profile['company']['website']}}</span></li>
                                             <li class="list-group-item">CEO <span class="float-right text-right">{{$company_profile['company']['CEO']}}</span></li>
                                             <li class="list-group-item">Employees <span class="float-right text-right">{{$company_profile['company']['employees']}}</span></li>

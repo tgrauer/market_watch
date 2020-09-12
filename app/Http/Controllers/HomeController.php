@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
 
-    	$sector_performance = $this->get_sectors();
+    	$sector_performance = $this->sector_performance();
     	$todays_earnings = $this->todays_earnings();
     	$news = $this->get_news();
     	$unemployment_rate = $this->get_unemployment_rate();
@@ -50,7 +50,7 @@ class HomeController extends Controller
     	return $this->api->sendRequest('search/'.$search_term);
     }
 
-    public function get_sectors()
+    public function sector_performance()
     {
         return $this->api->sendRequest('/stock/market/sector-performance');
     }
