@@ -218,6 +218,11 @@ class CompanyController extends Controller
 
     }
 
+    public function getDividends($ticker)
+    {
+        return $this->api->sendRequest('stock/'.$ticker.'/dividends/5y');
+    }
+
     public function advanced_stats($ticker)
     {
         return $this->api->sendRequest('/stock/'.$ticker.'/advanced-stats');

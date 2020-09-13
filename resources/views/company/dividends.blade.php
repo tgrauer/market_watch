@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- <?php dd($advanced_stats);?> --}}
+{{-- <?php dd($company_dividends);?> --}}
 
 <div class="d-flex wrapper">
     
@@ -50,6 +50,14 @@
                 </div>
             </div>
 
+            <div class="col-sm-8 my-5">
+                <div class="cb" style="height:350px;">
+                    <canvas id="dividend_histroy_chart"  max-height="280"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
             <div class="col-sm-12">
                 <div class="tab-content mt30" id="nav-tabContent">
                     

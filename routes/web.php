@@ -22,9 +22,12 @@ Route::prefix('company')->group(function(){
 	Route::get('/{ticker}/financials/', 'CompanyController@getCompanyFinancials');
 	Route::get('/{ticker}/insider-transactions', 'CompanyController@getCompanyInsiderTrades');
 	Route::get('/{ticker}/analyst_ratings', 'CompanyController@analystRatings');
-	Route::get('/{ticker}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
 	Route::get('/{ticker}/earnings', 'CompanyController@getEarnings');
 	Route::get('/{ticker}/chart/{range}', 'CompanyController@build_stock_chart');
+
+	// Ajax
+	Route::get('/{ticker}/get_analyst_ratings', 'CompanyController@getAnalystRatings');
+	Route::get('/{ticker}/get_dividends', 'CompanyController@getDividends');
 });
 
 

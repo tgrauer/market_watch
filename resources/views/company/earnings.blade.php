@@ -47,13 +47,13 @@
                                     <tbody>
                                         @foreach($company_earnings['earnings'] as $earnings)
                                             <tr>
-                                                <td>{{$earnings['fiscalPeriod']}}</td>
-                                                <td>{{Carbon\Carbon::parse($earnings['EPSReportDate'])->isoFormat('M-D-Y')}}</td>
-                                                <td>@money($earnings['EPSSurpriseDollar'] * 100)</td>
-                                                <td>{{$earnings['actualEPS']}}</td>
-                                                <td>{{$earnings['consensusEPS']}}</td>
-                                                <td>{{$earnings['numberOfEstimates']}}</td>
-                                                <td>{{$earnings['yearAgoChangePercent'] * 100}}</td>
+                                                <td>{{!empty($earnings['fiscalPeriod']) ? $earnings['fiscalPeriod'] : 'N/A'}}</td>
+                                                <td>{{!empty($earnings['EPSReportDate']) ? Carbon\Carbon::parse($earnings['EPSReportDate'])->isoFormat('M-D-Y') : 'N/A'}}</td>
+                                                <td>${{!empty($earnings['EPSSurpriseDollar']) ? $earnings['EPSSurpriseDollar'] : 'N/A'}}</td>
+                                                <td>{{!empty($earnings['actualEPS']) ? $earnings['actualEPS'] : 'N/A'}}</td>
+                                                <td>{{!empty($earnings['consensusEPS']) ? $earnings['consensusEPS'] : 'N/A'}}</td>
+                                                <td>{{!empty($earnings['numberOfEstimates']) ? $earnings['numberOfEstimates'] : 'N/A'}}</td>
+                                                <td>{{!empty($earnings['yearAgoChangePercent']) ? $earnings['yearAgoChangePercent'] * 100 : 'N/A'}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php dd($analyst_ratings);?>
+{{-- <?php dd($analyst_ratings);?> --}}
 
 <div class="d-flex wrapper">
 
@@ -35,7 +35,7 @@
             <div class="col-sm-4 analyst_ratings_chart">
                 <h3 class="text-center">Current Analyst Rating</h3>
                 <div class="cb" style="min-height:300px;">
-                    <canvas id="current_analyst_ratings_chart" width="400" height=320"></canvas>
+                    <canvas id="current_analyst_ratings_chart" width="400" height="320"></canvas>
                 </div>
             </div>
 
